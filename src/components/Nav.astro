@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+import { NAV_LINKS } from '~/lib/nav';
+import { profile } from '~/data/profile';
+---
+
+<header
+  id="site-nav"
+  data-scrolled="false"
+  class="fixed inset-x-0 top-0 z-40 border-b border-transparent transition-colors duration-300"
+>
+  <nav
+    class="container-page flex h-16 items-center justify-between gap-4"
+    aria-label="Primary"
+  >
+    <a
+      href="#hero"
+      class="flex items-center gap-2 text-sm font-semibold text-primary"
+      aria-label={`${profile.name} — home`}
+    >
+      <span class="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span>
+      <span>{profile.name}</span>
+    </a>
+
+    <ul class="hidden items-center gap-1 md:flex">
+      {
+        NAV_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              data-nav-link
+              class="nav-link rounded-md px-3 py-2"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <Button
+        href={profile.resumeUrl}
+        variant="ghost"
+        size="sm"
+        class="hidden sm:inline-flex"
+        aria-label="Download resume"
+      >
+        <Icon name="lucide:download" width={16} height={16} aria-hidden="true" />
+        <span>Resume</span>
+      </Button>
+
+      <button
+        id="mobile-menu-trigger"
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-md text-secondary transition-colors hover:text-primary md:hidden"
+        aria-label="Open menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <Icon name="lucide:menu" width={22} height={22} aria-hidden="true" />
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  if (nav) {
+    const update = () => {
+      nav.dataset.scrolled = window.scrollY > 50 ? 'true' : 'false';
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
+
+<style is:global>
+  #site-nav[data-scrolled='true'] {
+    background-color: color-mix(in oklab, var(--color-base) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: var(--color-subtle);
+  }
+</style>

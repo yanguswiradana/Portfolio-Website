@@ -1,0 +1,125 @@
+---
+import { Icon } from 'astro-icon/components';
+import SocialIcon from '~/components/ui/SocialIcon.astro';
+import { NAV_LINKS } from '~/lib/nav';
+import { profile } from '~/data/profile';
+---
+
+<dialog
+  id="mobile-menu"
+  class="fixed inset-0 z-50 m-0 h-screen w-screen max-w-none border-0 bg-base p-0 text-primary backdrop:bg-black/60 md:hidden"
+  aria-label="Mobile navigation"
+>
+  <div class="flex h-full flex-col">
+    <div
+      class="container-page flex h-16 items-center justify-between border-b border-subtle"
+    >
+      <span class="text-sm font-semibold uppercase tracking-wider text-muted">
+        Menu
+      </span>
+      <button
+        id="mobile-menu-close"
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-md text-secondary transition-colors hover:text-primary"
+        aria-label="Close menu"
+      >
+        <Icon name="lucide:x" width={22} height={22} aria-hidden="true" />
+      </button>
+    </div>
+
+    <nav class="container-page flex-1 py-8" aria-label="Mobile primary">
+      <ul class="space-y-1">
+        {
+          NAV_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                data-nav-link
+                class="block rounded-md px-3 py-3 text-lg text-secondary transition-colors hover:bg-elevated hover:text-primary"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href={profile.resumeUrl}
+            class="mt-4 flex items-center gap-2 rounded-md px-3 py-3 text-lg text-secondary transition-colors hover:bg-elevated hover:text-primary"
+          >
+            <Icon name="lucide:download" width={20} height={20} aria-hidden="true" />
+            <span>Download resume</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div
+      class="container-page flex items-center gap-4 border-t border-subtle py-6"
+    >
+      <SocialIcon
+        name="github"
+        href={profile.socials.github}
+        label="GitHub"
+        size={22}
+      />
+      <SocialIcon
+        name="linkedin"
+        href={profile.socials.linkedin}
+        label="LinkedIn"
+        size={22}
+      />
+      {
+        profile.socials.twitter && (
+          <SocialIcon
+            name="twitter"
+            href={profile.socials.twitter}
+            label="Twitter"
+            size={22}
+          />
+        )
+      }
+      <span class="ml-auto text-xs text-muted">© {new Date().getFullYear()}</span>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('mobile-menu') as HTMLDialogElement | null;
+  const trigger = document.getElementById('mobile-menu-trigger');
+  const closeBtn = document.getElementById('mobile-menu-close');
+
+  const open = () => {
+    if (!dialog) return;
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    trigger?.setAttribute('aria-expanded', 'true');
+    closeBtn?.focus();
+  };
+
+  const close = () => {
+    if (!dialog) return;
+    dialog.close();
+    document.body.style.overflow = '';
+    trigger?.setAttribute('aria-expanded', 'false');
+    trigger?.focus();
+  };
+
+  trigger?.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) close();
+  });
+
+  dialog?.addEventListener('close', () => {
+    document.body.style.overflow = '';
+    trigger?.setAttribute('aria-expanded', 'false');
+  });
+
+  dialog?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (dialog.open) close();
+    });
+  });
+</script>

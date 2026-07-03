@@ -1,0 +1,31 @@
+---
+import { cn } from '~/lib/cn';
+
+interface Props {
+  href?: string;
+  class?: string;
+  as?: 'div' | 'article' | 'li';
+}
+
+const { href, class: className, as = 'div' }: Props = Astro.props;
+const base =
+  'rounded-lg border border-subtle bg-elevated p-6 transition-all duration-200 hover:border-accent/50 hover:-translate-y-0.5';
+---
+
+{href ? (
+  <a href={href} class={cn(base, 'block no-underline', className)}>
+    <slot />
+  </a>
+) : as === 'article' ? (
+  <article class={cn(base, className)}>
+    <slot />
+  </article>
+) : as === 'li' ? (
+  <li class={cn(base, className)}>
+    <slot />
+  </li>
+) : (
+  <div class={cn(base, className)}>
+    <slot />
+  </div>
+)}

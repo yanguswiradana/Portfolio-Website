@@ -1,0 +1,33 @@
+---
+import { Icon } from 'astro-icon/components';
+import { cn } from '~/lib/cn';
+
+interface Props {
+  name: string;
+  href: string;
+  label: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, href, label, size = 20, class: className } = Astro.props;
+const isExternal = href.startsWith('http');
+---
+
+<a
+  href={href}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+  aria-label={label}
+  class={cn(
+    'inline-flex items-center justify-center text-secondary transition-all hover:-translate-y-0.5 hover:text-accent focus-visible:text-accent',
+    className
+  )}
+>
+  <Icon
+    name={`lucide:${name}`}
+    width={size}
+    height={size}
+    aria-hidden="true"
+  />
+</a>

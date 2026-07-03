@@ -1,0 +1,72 @@
+---
+import { cn } from '~/lib/cn';
+
+type Variant = 'primary' | 'secondary' | 'ghost';
+type Size = 'sm' | 'md' | 'lg';
+
+interface Props {
+  variant?: Variant;
+  size?: Size;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  target?: string;
+  rel?: string;
+  class?: string;
+  'aria-label'?: string;
+  disabled?: boolean;
+  id?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  target,
+  rel,
+  class: className,
+  'aria-label': ariaLabel,
+  disabled = false,
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors disabled:pointer-events-none disabled:opacity-50';
+
+const variants: Record<Variant, string> = {
+  primary: 'bg-accent text-base hover:bg-accent-hover',
+  secondary: 'border border-subtle bg-elevated text-primary hover:border-accent hover:text-accent',
+  ghost: 'text-secondary hover:text-primary',
+};
+
+const sizes: Record<Size, string> = {
+  sm: 'h-9 px-3 text-sm',
+  md: 'h-11 px-5 text-sm',
+  lg: 'h-12 px-6 text-base',
+};
+
+const classes = cn(base, variants[variant], sizes[size], className);
+
+const isExternal = href ? href.startsWith('http') || target === '_blank' : false;
+const computedRel = isExternal ? rel ?? 'noopener noreferrer' : rel;
+---
+
+{href ? (
+  <a
+    href={href}
+    target={target}
+    rel={computedRel}
+    class={classes}
+    aria-label={ariaLabel}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    class={classes}
+    aria-label={ariaLabel}
+    disabled={disabled}
+  >
+    <slot />
+  </button>
+)}

@@ -1,0 +1,59 @@
+---
+import SocialIcon from '~/components/ui/SocialIcon.astro';
+import { profile } from '~/data/profile';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-subtle py-10">
+  <div
+    class="container-page flex flex-col items-center justify-between gap-4 sm:flex-row"
+  >
+    <p class="text-sm text-muted">
+      © {year} {profile.name}. Built with
+      <a
+        href="https://astro.build"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-secondary transition-colors hover:text-primary">Astro</a
+      >
+      &
+      <a
+        href="https://tailwindcss.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-secondary transition-colors hover:text-primary">Tailwind</a
+      >.
+    </p>
+    <div class="flex items-center gap-4">
+      <SocialIcon
+        name="github"
+        href={profile.socials.github}
+        label="GitHub"
+        size={18}
+      />
+      <SocialIcon
+        name="linkedin"
+        href={profile.socials.linkedin}
+        label="LinkedIn"
+        size={18}
+      />
+      {
+        profile.socials.twitter && (
+          <SocialIcon
+            name="twitter"
+            href={profile.socials.twitter}
+            label="Twitter"
+            size={18}
+          />
+        )
+      }
+      <a
+        href="#hero"
+        class="ml-2 text-sm text-muted transition-colors hover:text-primary"
+      >
+        Back to top ↑
+      </a>
+    </div>
+  </div>
+</footer>

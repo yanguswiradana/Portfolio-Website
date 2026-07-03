@@ -1,0 +1,96 @@
+@import '@fontsource-variable/inter';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-base: #0a0a0b;
+    --color-elevated: #111114;
+    --color-subtle: #1f1f23;
+    --color-primary: #fafafa;
+    --color-secondary: #a1a1aa;
+    --color-muted: #71717a;
+    --color-accent: #a78bfa;
+    --color-accent-hover: #c4b5fd;
+    --color-success: #34d399;
+    --color-error: #f87171;
+
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-base text-secondary font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary tracking-tight;
+  }
+
+  ::selection {
+    background-color: rgba(167, 139, 250, 0.3);
+    @apply text-primary;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-base rounded-sm;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 -translate-y-20 rounded-md bg-elevated px-4 py-2 text-sm text-primary;
+    @apply transition-transform focus:translate-y-0;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-6;
+  }
+
+  .reveal {
+    @apply translate-y-4 opacity-0 transition-all duration-700 ease-out;
+  }
+
+  .reveal.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .nav-link {
+    @apply relative text-sm text-secondary transition-colors hover:text-primary;
+  }
+
+  .nav-link::after {
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300;
+    content: '';
+  }
+
+  .nav-link.is-active {
+    @apply text-primary;
+  }
+
+  .nav-link.is-active::after {
+    @apply w-full;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    @apply translate-y-0 opacity-100;
+  }
+}
