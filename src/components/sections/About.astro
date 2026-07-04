@@ -4,24 +4,32 @@ import { profile } from '~/data/profile';
 
 const facts = [
   { label: 'Location', value: profile.location },
-  { label: 'Focus', value: 'Full-stack web development' },
-  { label: 'Currently', value: 'Learning Rust & building side projects' },
+  { label: 'Focus', value: profile.focus },
+  { label: 'Currently', value: profile.currently },
 ];
 ---
 
 <Section id="about" title="About">
   <div class="grid gap-10 md:grid-cols-3">
-    <div class="reveal md:col-span-2 space-y-4 text-lg leading-relaxed text-secondary">
+    <div
+      x-data
+      x-intersect.once="$el.classList.add('is-visible')"
+      class="reveal md:col-span-2 space-y-4 text-lg leading-relaxed text-zinc-400"
+    >
       <p>{profile.bio}</p>
     </div>
-    <aside class="reveal space-y-3">
+    <aside class="space-y-3">
       {
         facts.map((fact) => (
-          <div class="rounded-lg border border-subtle bg-elevated p-4">
-            <p class="text-xs font-medium uppercase tracking-wider text-muted">
+          <div
+            x-data
+            x-intersect.once="$el.classList.add('is-visible')"
+            class="reveal rounded-xl border border-subtle bg-elevated p-4"
+          >
+            <p class="text-xs font-medium uppercase tracking-wider text-zinc-600">
               {fact.label}
             </p>
-            <p class="mt-1 text-sm text-primary">{fact.value}</p>
+            <p class="mt-1 text-sm text-white">{fact.value}</p>
           </div>
         ))
       }

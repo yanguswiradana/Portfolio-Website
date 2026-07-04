@@ -15,19 +15,23 @@ const headingId = title ? `${id}-heading` : undefined;
 <section
   id={id}
   aria-labelledby={headingId}
-  class={cn('container-page py-24 md:py-32', className)}
+  class={cn('mx-auto w-full max-w-6xl px-6 py-24 md:py-32', className)}
 >
   {(title || subtitle) && (
-    <header class="reveal mb-12 max-w-2xl md:mb-16">
+    <header
+      x-data
+      x-intersect.once="$el.classList.add('is-visible')"
+      class="reveal mb-12 max-w-2xl md:mb-16"
+    >
       {title && (
         <h2
           id={headingId}
-          class="text-3xl font-semibold tracking-tight md:text-4xl"
+          class="text-3xl font-semibold tracking-tight text-white md:text-4xl"
         >
           {title}
         </h2>
       )}
-      {subtitle && <p class="mt-4 text-lg text-secondary">{subtitle}</p>}
+      {subtitle && <p class="mt-4 text-lg text-zinc-400">{subtitle}</p>}
     </header>
   )}
   <slot />

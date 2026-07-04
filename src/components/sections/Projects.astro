@@ -6,6 +6,28 @@ import { projects } from '~/data/projects';
 const sorted = [...projects].sort(
   (a, b) => Number(b.featured) - Number(a.featured)
 );
+
+// Map tech keywords → color class
+function getTagColor(tag: string): string {
+  const t = tag.toLowerCase();
+  if (t.includes('next') || t.includes('react')) return 'bg-sky-500/10 border-sky-500/30 text-sky-300 hover:bg-sky-500/20';
+  if (t.includes('typescript') || t.includes('ts')) return 'bg-blue-500/10 border-blue-500/30 text-blue-300 hover:bg-blue-500/20';
+  if (t.includes('javascript') || t.includes('js')) return 'bg-yellow-500/10 border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/20';
+  if (t.includes('tailwind')) return 'bg-cyan-500/10 border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20';
+  if (t.includes('astro')) return 'bg-orange-500/10 border-orange-500/30 text-orange-300 hover:bg-orange-500/20';
+  if (t.includes('python')) return 'bg-green-500/10 border-green-500/30 text-green-300 hover:bg-green-500/20';
+  if (t.includes('laravel') || t.includes('php')) return 'bg-red-500/10 border-red-500/30 text-red-300 hover:bg-red-500/20';
+  if (t.includes('node')) return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20';
+  if (t.includes('postgres') || t.includes('sql') || t.includes('mysql')) return 'bg-indigo-500/10 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20';
+  if (t.includes('docker')) return 'bg-blue-400/10 border-blue-400/30 text-blue-200 hover:bg-blue-400/20';
+  if (t.includes('gemini') || t.includes('openai') || t.includes('ai') || t.includes('gpt')) return 'bg-purple-500/10 border-purple-500/30 text-purple-300 hover:bg-purple-500/20';
+  if (t.includes('google maps') || t.includes('maps')) return 'bg-lime-500/10 border-lime-500/30 text-lime-300 hover:bg-lime-500/20';
+  if (t.includes('vercel')) return 'bg-zinc-400/10 border-zinc-400/30 text-zinc-300 hover:bg-zinc-400/20';
+  if (t.includes('figma')) return 'bg-pink-500/10 border-pink-500/30 text-pink-300 hover:bg-pink-500/20';
+  if (t.includes('git')) return 'bg-orange-600/10 border-orange-600/30 text-orange-300 hover:bg-orange-600/20';
+  // fallback
+  return 'bg-slate-500/10 border-slate-500/30 text-slate-300 hover:bg-slate-500/20';
+}
 ---
 
 <Section
@@ -16,7 +38,11 @@ const sorted = [...projects].sort(
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     {
       sorted.map((project) => (
-        <article class="reveal group flex flex-col overflow-hidden rounded-lg border border-subtle bg-elevated transition-all duration-200 hover:-translate-y-1 hover:border-accent/50">
+        <article
+          x-data
+          x-intersect.once="$el.classList.add('is-visible')"
+          class="reveal group flex flex-col overflow-hidden rounded-lg border border-subtle bg-elevated transition-all duration-200 hover:-translate-y-1 hover:border-accent/50"
+        >
           <div class="aspect-video w-full overflow-hidden bg-base">
             <img
               src={project.image}
@@ -32,7 +58,9 @@ const sorted = [...projects].sort(
             </p>
             <div class="mt-4 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span class="inline-flex items-center rounded-sm border border-subtle bg-base/50 px-2 py-0.5 font-mono text-xs text-secondary">
+                <span
+                  class={`inline-flex cursor-default items-center rounded-md border px-2.5 py-0.5 font-mono text-xs font-medium transition-all duration-200 hover:scale-105 ${getTagColor(tag)}`}
+                >
                   {tag}
                 </span>
               ))}

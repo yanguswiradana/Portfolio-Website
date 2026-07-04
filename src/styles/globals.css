@@ -1,5 +1,8 @@
 @import '@fontsource-variable/inter';
 
+/* Hide Alpine x-cloak elements until Alpine initializes */
+[x-cloak] { display: none !important; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,38 +48,19 @@
 }
 
 @layer components {
+  /* Skip link for accessibility */
   .skip-link {
     @apply absolute left-4 top-4 z-50 -translate-y-20 rounded-md bg-elevated px-4 py-2 text-sm text-primary;
     @apply transition-transform focus:translate-y-0;
   }
 
-  .container-page {
-    @apply mx-auto w-full max-w-6xl px-6;
-  }
-
+  /* Alpine.js scroll-reveal animation */
   .reveal {
     @apply translate-y-4 opacity-0 transition-all duration-700 ease-out;
   }
 
   .reveal.is-visible {
     @apply translate-y-0 opacity-100;
-  }
-
-  .nav-link {
-    @apply relative text-sm text-secondary transition-colors hover:text-primary;
-  }
-
-  .nav-link::after {
-    @apply absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300;
-    content: '';
-  }
-
-  .nav-link.is-active {
-    @apply text-primary;
-  }
-
-  .nav-link.is-active::after {
-    @apply w-full;
   }
 }
 

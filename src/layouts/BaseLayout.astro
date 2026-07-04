@@ -1,7 +1,6 @@
 ---
 import '~/styles/globals.css';
 import Nav from '~/components/Nav.astro';
-import MobileMenu from '~/components/MobileMenu.astro';
 import Footer from '~/components/Footer.astro';
 
 interface Props {
@@ -28,19 +27,19 @@ const { title, description, ogImage } = Astro.props;
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0A0A0B" />
+
+    <!-- Alpine.js Intersect Plugin (must load before Alpine core) -->
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <!-- Alpine.js Core -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body class="min-h-screen">
     <a href="#main" class="skip-link">Skip to content</a>
     <Nav />
-    <MobileMenu />
     <main id="main" class="pt-16">
       <slot />
     </main>
     <Footer />
-    <script>
-      import { initScrollReveal, initActiveSection } from '~/lib/motion';
-      initScrollReveal();
-      initActiveSection();
-    </script>
   </body>
 </html>
+

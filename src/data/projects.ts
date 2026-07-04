@@ -10,32 +10,33 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Project One',
+    title: 'BaliWasteAI',
     description:
-      'A short description of what this project does and the problem it solves. Keep it to one or two sentences.',
-    image: '/images/projects/p1.png',
-    tags: ['Astro', 'TypeScript', 'Tailwind'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourhandle/project-one',
+      "BaliWasteAI is an intelligent, bilingual mobile-first web application designed to help citizens and businesses in Bali manage their waste disposal efficiently. By providing real-time capacity data of local landfills (TPS) and integrating Google's Gemini 3.5 Flash AI for instant waste classification, the app reduces the chance of rejected waste and overflowing bins.",
+    image: '/images/projects/BaliWasteAI.png',
+    tags: ['Nextjs', 'Typescript', 'Tailwind', 'Google Gemini 3.5 Flash AI', 'Google Maps Platform'],
+    liveUrl: 'https://bali-waste-ai.vercel.app/',
+    githubUrl: 'https://github.com/yanguswiradana/BaliWasteAI.git',
     featured: true,
   },
   {
-    title: 'Project Two',
+    title: 'ReduktorDev',
     description:
-      'A short description of what this project does and why it matters. Focus on the outcome, not the tech.',
-    image: '/images/projects/p2.png',
-    tags: ['Next.js', 'React', 'PostgreSQL'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourhandle/project-two',
+      'ReduktorDev is a company that specializes in providing web development services to businesses. We build custom websites and web applications that are tailored to the specific needs of our clients. We also provide a range of other web development services, including website maintenance, website redesign, and website optimization.',
+    image: '/images/projects/rdk-dev.png',
+    tags: ['Next.js', 'React', 'Typescript', 'Tailwind'],
+    liveUrl: 'https://rdk-dev.vercel.app/',
+    githubUrl: 'https://github.com/yanguswiradana/rdk-dev.git',
     featured: true,
   },
   {
-    title: 'Project Three',
+    title: 'RecodeID',
     description:
-      'A short description of what this project does and the value it delivers. Mention scale or impact if relevant.',
-    image: '/images/projects/p3.png',
-    tags: ['React', 'TypeScript', 'tRPC'],
-    liveUrl: 'https://example.com',
-    featured: false,
+      'RecodeID is a web-based online course/class provider that focuses on learning logic using Python.',
+    image: '/images/projects/recodeid.png',
+    tags: ['React', 'Typescript', 'Tailwind',],
+    liveUrl: 'https://recode-id.vercel.app/',
+    githubUrl: 'https://github.com/yanguswiradana/RecodeID.git',
+    featured: true,
   },
 ];
