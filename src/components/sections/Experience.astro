@@ -39,7 +39,7 @@ import { experience } from '~/data/experience';
               )}
             </h3>
             <p class="whitespace-nowrap text-sm text-zinc-600">
-              {entry.startDate} — {entry.endDate ?? 'Present'}
+              {entry.startDate} — {entry.endDate || 'Present'}
             </p>
           </div>
           {entry.location && (

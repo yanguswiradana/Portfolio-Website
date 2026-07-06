@@ -53,7 +53,7 @@ const { endpoint, email } = Astro.props;
   }`}
   action={endpoint}
   method="POST"
-  @submit.prevent="submit($event)"
+  x-on:submit.prevent="submit($event)"
   class="space-y-5"
   novalidate
 >

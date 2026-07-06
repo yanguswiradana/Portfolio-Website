@@ -6,51 +6,35 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-subtle py-10">
-  <div
-    class="container-page flex flex-col items-center justify-between gap-4 sm:flex-row"
-  >
-    <p class="text-sm text-muted">
+  <div class="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
+    <p class="text-sm text-zinc-600">
       © {year} {profile.name}. Built with
       <a
         href="https://astro.build"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-secondary transition-colors hover:text-primary">Astro</a
-      >
+        class="text-zinc-400 transition-colors hover:text-white"
+      >Astro</a>
       &
       <a
         href="https://tailwindcss.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-secondary transition-colors hover:text-primary">Tailwind</a
-      >.
+        class="text-zinc-400 transition-colors hover:text-white"
+      >Tailwind</a>.
     </p>
     <div class="flex items-center gap-4">
-      <SocialIcon
-        name="github"
-        href={profile.socials.github}
-        label="GitHub"
-        size={18}
-      />
-      <SocialIcon
-        name="linkedin"
-        href={profile.socials.linkedin}
-        label="LinkedIn"
-        size={18}
-      />
-      {
-        profile.socials.twitter && (
-          <SocialIcon
-            name="twitter"
-            href={profile.socials.twitter}
-            label="Twitter"
-            size={18}
-          />
-        )
-      }
+      <SocialIcon name="github"    href={profile.socials.github}    label="GitHub"       size={18} pack="simple-icons" />
+      <SocialIcon name="linkedin"  href={profile.socials.linkedin}  label="LinkedIn"     size={18} pack="simple-icons" />
+      {profile.socials.twitter && (
+        <SocialIcon name="x"       href={profile.socials.twitter}   label="X (Twitter)"  size={18} pack="simple-icons" />
+      )}
+      {profile.socials.instagram && (
+        <SocialIcon name="instagram" href={profile.socials.instagram} label="Instagram"  size={18} pack="simple-icons" />
+      )}
       <a
         href="#hero"
-        class="ml-2 text-sm text-muted transition-colors hover:text-primary"
+        class="ml-2 text-sm text-zinc-600 transition-colors hover:text-white"
       >
         Back to top ↑
       </a>

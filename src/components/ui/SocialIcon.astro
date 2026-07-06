@@ -3,15 +3,19 @@ import { Icon } from 'astro-icon/components';
 import { cn } from '~/lib/cn';
 
 interface Props {
+  /** Icon name without pack prefix, e.g. 'github', 'x', 'linkedin' */
   name: string;
   href: string;
   label: string;
   size?: number;
   class?: string;
+  /** Icon pack to use: 'simple-icons' for brand logos, 'lucide' for UI icons */
+  pack?: 'lucide' | 'simple-icons';
 }
 
-const { name, href, label, size = 20, class: className } = Astro.props;
+const { name, href, label, size = 20, class: className, pack = 'lucide' } = Astro.props;
 const isExternal = href.startsWith('http');
+const iconName = `${pack}:${name}`;
 ---
 
 <a
@@ -20,12 +24,12 @@ const isExternal = href.startsWith('http');
   rel={isExternal ? 'noopener noreferrer' : undefined}
   aria-label={label}
   class={cn(
-    'inline-flex items-center justify-center text-secondary transition-all hover:-translate-y-0.5 hover:text-accent focus-visible:text-accent',
+    'inline-flex items-center justify-center text-zinc-400 transition-all hover:-translate-y-0.5 hover:text-accent focus-visible:text-accent',
     className
   )}
 >
   <Icon
-    name={`lucide:${name}`}
+    name={iconName}
     width={size}
     height={size}
     aria-hidden="true"

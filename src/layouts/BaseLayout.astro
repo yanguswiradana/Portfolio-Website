@@ -2,6 +2,7 @@
 import '~/styles/globals.css';
 import Nav from '~/components/Nav.astro';
 import Footer from '~/components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -28,18 +29,53 @@ const { title, description, ogImage } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0A0A0B" />
 
+    <!-- View Transitions -->
+    <ViewTransitions />
+
     <!-- Alpine.js Intersect Plugin (must load before Alpine core) -->
-    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script is:inline defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <!-- Alpine.js Core -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script is:inline defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body class="min-h-screen">
     <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Scroll Progress Bar -->
+    <div
+      id="scroll-progress"
+      aria-hidden="true"
+      class="fixed left-0 top-0 z-[9999] h-[2px] w-0 bg-gradient-to-r from-accent via-purple-500 to-pink-500 transition-none"
+    ></div>
+
     <Nav />
     <main id="main" class="pt-16">
       <slot />
     </main>
     <Footer />
+
+    <!-- Scroll Progress Script -->
+    <script is:inline>
+      function updateScrollProgress() {
+        const el = document.getElementById('scroll-progress');
+        if (!el) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        el.style.width = progress + '%';
+      }
+      window.addEventListener('scroll', updateScrollProgress, { passive: true });
+      document.addEventListener('astro:page-load', () => {
+        updateScrollProgress();
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+      });
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script is:inline>
+      window.va = window.va || function (...args) {
+        (window.vaq = window.vaq || []).push(args);
+      };
+    </script>
+    <script is:inline defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>
-

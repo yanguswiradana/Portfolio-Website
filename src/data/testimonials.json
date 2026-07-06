@@ -1,0 +1,20 @@
+{
+  "testimonials": [
+    {
+      "name": "John Doe",
+      "role": "CEO",
+      "company": "Acme Inc.",
+      "avatar": "",
+      "content": "Wiradana delivered exceptional work on our web platform. His attention to detail, proactive communication, and ability to translate complex requirements into clean, functional interfaces made him a pleasure to work with.",
+      "link": "https://linkedin.com"
+    },
+    {
+      "name": "Jane Smith",
+      "role": "Product Manager",
+      "company": "Startup Co.",
+      "avatar": "",
+      "content": "One of the most talented developers I've worked with. He shipped our MVP on time, maintained high code quality, and brought great ideas to the table. Highly recommend!",
+      "link": ""
+    }
+  ]
+}

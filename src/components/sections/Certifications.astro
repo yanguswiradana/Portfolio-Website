@@ -1,0 +1,54 @@
+---
+import Section from '~/components/ui/Section.astro';
+import { Icon } from 'astro-icon/components';
+import certificationsData from '~/data/certifications.json';
+
+const { certifications } = certificationsData;
+
+const colorMap: Record<string, { bg: string; text: string; border: string; icon: string }> = {
+  blue:   { bg: 'bg-blue-500/10',   text: 'text-blue-400',   border: 'border-blue-500/20',   icon: 'text-blue-400'   },
+  purple: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20', icon: 'text-purple-400' },
+  green:  { bg: 'bg-emerald-500/10',text: 'text-emerald-400',border: 'border-emerald-500/20',icon: 'text-emerald-400'},
+  pink:   { bg: 'bg-pink-500/10',   text: 'text-pink-400',   border: 'border-pink-500/20',   icon: 'text-pink-400'   },
+  orange: { bg: 'bg-orange-500/10', text: 'text-orange-400', border: 'border-orange-500/20', icon: 'text-orange-400' },
+};
+---
+
+<Section id="certifications" title="Certifications">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {certifications.map((cert) => {
+      const colors = colorMap[cert.color] ?? colorMap.blue;
+      return (
+        <div
+          x-data
+          x-intersect.once="$el.classList.add('is-visible')"
+          class="reveal group relative overflow-hidden rounded-2xl border border-subtle bg-elevated p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:shadow-xl hover:shadow-black/30"
+        >
+          {/* Gradient glow */}
+          <div class={`pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full blur-2xl opacity-20 ${colors.bg}`} />
+
+          <div class="relative flex items-start gap-4">
+            <div class={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${colors.bg} border ${colors.border}`}>
+              <Icon name={cert.icon} width={24} height={24} class={colors.icon} aria-hidden="true" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-medium text-zinc-500">{cert.issuer} · {cert.date}</p>
+              <h3 class="mt-1 text-sm font-semibold leading-snug text-white">{cert.title}</h3>
+              {cert.credentialUrl && (
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`mt-2 inline-flex items-center gap-1 text-xs ${colors.text} transition-opacity hover:opacity-80`}
+                >
+                  <span>View credential</span>
+                  <Icon name="lucide:external-link" width={12} height={12} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</Section>

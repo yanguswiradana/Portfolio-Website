@@ -1,5 +1,6 @@
 ---
 import Section from '~/components/ui/Section.astro';
+import SocialIcon from '~/components/ui/SocialIcon.astro';
 import { profile } from '~/data/profile';
 
 const facts = [
@@ -7,17 +8,40 @@ const facts = [
   { label: 'Focus', value: profile.focus },
   { label: 'Currently', value: profile.currently },
 ];
+
+const socials = [
+  { name: 'github',    href: profile.socials.github,    label: 'GitHub' },
+  { name: 'linkedin',  href: profile.socials.linkedin,  label: 'LinkedIn' },
+  { name: 'x',        href: profile.socials.twitter,   label: 'X (Twitter)' },
+  { name: 'instagram', href: profile.socials.instagram, label: 'Instagram' },
+];
 ---
 
 <Section id="about" title="About">
   <div class="grid gap-10 md:grid-cols-3">
+    <!-- Bio -->
     <div
       x-data
       x-intersect.once="$el.classList.add('is-visible')"
-      class="reveal md:col-span-2 space-y-4 text-lg leading-relaxed text-zinc-400"
+      class="reveal md:col-span-2 space-y-6"
     >
-      <p>{profile.bio}</p>
+      <p class="text-lg leading-relaxed text-zinc-400">{profile.bio}</p>
+
+      <!-- Social Links -->
+      <div class="flex items-center gap-4 pt-2">
+        {socials.map((s) => (
+          <SocialIcon
+            name={s.name}
+            href={s.href}
+            label={s.label}
+            size={22}
+            pack="simple-icons"
+          />
+        ))}
+      </div>
     </div>
+
+    <!-- Info Cards -->
     <aside class="space-y-3">
       {
         facts.map((fact) => (
