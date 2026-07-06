@@ -15,8 +15,8 @@
     --color-primary: #fafafa;
     --color-secondary: #a1a1aa;
     --color-muted: #71717a;
-    --color-accent: #a78bfa;
-    --color-accent-hover: #c4b5fd;
+    --color-accent: #ff751f;
+    --color-accent-hover: #ff914d;
     --color-success: #34d399;
     --color-error: #f87171;
 
@@ -38,7 +38,7 @@
   }
 
   ::selection {
-    background-color: rgba(167, 139, 250, 0.3);
+    background-color: rgba(255, 117, 31, 0.3);
     @apply text-primary;
   }
 
