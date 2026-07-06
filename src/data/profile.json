@@ -1,11 +1,11 @@
 {
   "name": "I Wayan Agus Wiradana",
-  "role": "Web Developer",
+  "role": "Frontend Developer & UI/UX Designer",
   "tagline": "To Be and To Give.",
   "location": "Denpasar, Bali, Indonesia",
-  "focus": "Full-stack web developer",
+  "focus": "Frontend development & UI/UX design",
   "currently": "Learning AI & building side projects",
-  "bio": "I am a Web Developer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and actively exploring how to develop and integrate AI-driven solutions to create innovative digital experiences.",
+  "bio": "I am a Frontend Developer & UI/UX Designer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and actively exploring how to develop and integrate AI-driven solutions to create innovative digital experiences.",
   "avatarUrl": "/images/avatar.jpg",
   "resumeUrl": "/resume.pdf",
   "email": "yanguswiradana@gmail.com",
@@ -17,7 +17,7 @@
     "website": "https://example.com"
   },
   "seo": {
-    "title": "Wiradana — Web Developer",
-    "description": "I am a Web Developer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and actively exploring how to develop and integrate AI-driven solutions."
+    "title": "Wiradana — Frontend Developer & UI/UX Designer",
+    "description": "I am a Frontend Developer & UI/UX Designer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and actively exploring how to develop and integrate AI-driven solutions."
   }
 }
