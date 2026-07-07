@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { DocumentRenderer } from '@keystatic/core/renderer';
 import { translations } from '~/lib/translations';
 
 export async function getStaticPaths() {
@@ -17,6 +16,59 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const locale = 'en';
 const t = translations[locale];
+
+// Render Keystatic document nodes to HTML string (no React dependency)
+function renderNode(node: any): string {
+  if (!node) return '';
+
+  if (node.text !== undefined) {
+    let text = node.text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    if (node.bold) text = `<strong>${text}</strong>`;
+    if (node.italic) text = `<em>${text}</em>`;
+    if (node.underline) text = `<u>${text}</u>`;
+    if (node.code) text = `<code>${text}</code>`;
+    if (node.strikethrough) text = `<s>${text}</s>`;
+    return text;
+  }
+
+  const children = (node.children ?? []).map(renderNode).join('');
+
+  switch (node.type) {
+    case 'paragraph':
+      return `<p>${children}</p>`;
+    case 'heading': {
+      const level = node.level ?? 2;
+      return `<h${level}>${children}</h${level}>`;
+    }
+    case 'unordered-list':
+      return `<ul>${children}</ul>`;
+    case 'ordered-list':
+      return `<ol>${children}</ol>`;
+    case 'list-item':
+      return `<li>${children}</li>`;
+    case 'list-item-content':
+      return children;
+    case 'blockquote':
+      return `<blockquote>${children}</blockquote>`;
+    case 'code':
+      return `<pre><code>${children}</code></pre>`;
+    case 'divider':
+      return `<hr />`;
+    case 'link':
+      return `<a href="${node.href ?? '#'}" target="_blank" rel="noopener noreferrer">${children}</a>`;
+    case 'image':
+      return `<img src="${node.src ?? ''}" alt="${node.alt ?? ''}" />`;
+    default:
+      return children;
+  }
+}
+
+const renderedContent = Array.isArray(post.data.content)
+  ? post.data.content.map(renderNode).join('')
+  : '';
 ---
 
 <BaseLayout title={`${post.data.title} — Blog`} description={post.data.summary} locale={locale}>
@@ -24,7 +76,7 @@ const t = translations[locale];
     <!-- Back to blog -->
     <a
       href="/blog"
-      class="inline-flex items-center gap-1 text-sm text-secondary hover:text-accent mb-8"
+      class="inline-flex items-center gap-1 text-sm text-secondary hover:text-accent mb-8 block"
     >
       ← {t.backToBlog}
     </a>
@@ -56,9 +108,10 @@ const t = translations[locale];
       </div>
     )}
 
-    <!-- Content body -->
-    <div class="prose dark:prose-invert prose-zinc max-w-none text-secondary prose-headings:text-primary prose-a:text-accent prose-strong:text-primary">
-      <DocumentRenderer document={post.data.content} />
-    </div>
+    <!-- Content body — server-rendered, no React dependency -->
+    <div
+      class="prose dark:prose-invert prose-zinc max-w-none text-secondary prose-headings:text-primary prose-a:text-accent prose-strong:text-primary"
+      set:html={renderedContent}
+    />
   </article>
 </BaseLayout>
