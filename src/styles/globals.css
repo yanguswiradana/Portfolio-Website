@@ -104,8 +104,13 @@
   }
 
   ::selection {
-    background-color: var(--color-accent-selection);
-    @apply text-primary;
+    background-color: var(--color-accent-selection) !important;
+    color: var(--color-primary) !important;
+  }
+
+  ::-moz-selection {
+    background-color: var(--color-accent-selection) !important;
+    color: var(--color-primary) !important;
   }
 
   *:focus-visible {
