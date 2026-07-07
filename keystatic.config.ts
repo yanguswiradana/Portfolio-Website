@@ -1,4 +1,4 @@
-import { config, fields, singleton } from '@keystatic/core';
+import { config, fields, singleton, collection } from '@keystatic/core';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -250,4 +250,32 @@ export default config({
       schema: testimonialsSchema,
     }),
   },
+  collections: {
+    posts: collection({
+      label: 'Blog Posts',
+      path: 'src/content/posts/*',
+      slugField: 'title',
+      format: { data: 'json' },
+      schema: {
+        title: fields.text({ label: 'Title' }),
+        locale: fields.select({
+          label: 'Language',
+          options: [
+            { label: 'English', value: 'en' },
+            { label: 'Indonesian', value: 'id' }
+          ],
+          defaultValue: 'en'
+        }),
+        summary: fields.text({ label: 'Summary', multiline: true }),
+        publishedDate: fields.date({ label: 'Published Date' }),
+        coverImage: fields.text({ label: 'Cover Image URL (Optional)' }),
+        content: fields.document({
+          label: 'Content',
+          formatting: true,
+          links: true,
+          images: true,
+        })
+      }
+    })
+  }
 });

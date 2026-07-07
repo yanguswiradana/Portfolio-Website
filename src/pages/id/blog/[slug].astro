@@ -1,0 +1,64 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { DocumentRenderer } from '@keystatic/core/renderer';
+import { translations } from '~/lib/translations';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts')).filter(
+    (post) => post.data.locale === 'id'
+  );
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const locale = 'id';
+const t = translations[locale];
+---
+
+<BaseLayout title={`${post.data.title} — Blog`} description={post.data.summary} locale={locale}>
+  <article class="mx-auto max-w-3xl px-6 py-24 md:py-32">
+    <!-- Back to blog -->
+    <a
+      href="/id/blog"
+      class="inline-flex items-center gap-1 text-sm text-secondary hover:text-accent mb-8"
+    >
+      ← {t.backToBlog}
+    </a>
+
+    <!-- Header -->
+    <header class="mb-8">
+      <p class="text-sm text-muted">
+        {t.publishedOn} {new Date(post.data.publishedDate).toLocaleDateString('id-ID', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </p>
+      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-primary sm:text-4xl md:text-5xl">
+        {post.data.title}
+      </h1>
+      <p class="mt-4 text-lg text-secondary border-l-2 border-accent pl-4 italic">
+        {post.data.summary}
+      </p>
+    </header>
+
+    {post.data.coverImage && (
+      <div class="aspect-video w-full overflow-hidden rounded-xl border border-subtle bg-elevated mb-12">
+        <img
+          src={post.data.coverImage}
+          alt={`Cover image for ${post.data.title}`}
+          class="h-full w-full object-cover"
+        />
+      </div>
+    )}
+
+    <!-- Content body -->
+    <div class="prose dark:prose-invert prose-zinc max-w-none text-secondary prose-headings:text-primary prose-a:text-accent prose-strong:text-primary">
+      <DocumentRenderer document={post.data.content} />
+    </div>
+  </article>
+</BaseLayout>

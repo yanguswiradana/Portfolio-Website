@@ -1,0 +1,78 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { translations } from '~/lib/translations';
+
+const locale = 'en';
+const t = translations[locale];
+
+const posts = (await getCollection('posts')).filter(
+  (post) => post.data.locale === locale
+);
+
+const sorted = posts.sort(
+  (a, b) =>
+    new Date(b.data.publishedDate).getTime() - new Date(a.data.publishedDate).getTime()
+);
+---
+
+<BaseLayout title={`${t.blog} — Portfolio`} description={t.blogSubtitle} locale={locale}>
+  <main class="mx-auto max-w-4xl px-6 py-24 md:py-32">
+    <!-- Header -->
+    <header class="mb-12 max-w-2xl">
+      <h1 class="text-4xl font-semibold tracking-tight text-primary md:text-5xl">
+        {t.blog}
+      </h1>
+      <p class="mt-4 text-lg text-secondary">
+        {t.blogSubtitle}
+      </p>
+    </header>
+
+    <!-- Post list -->
+    {
+      sorted.length === 0 ? (
+        <p class="text-secondary">{t.emptyBlog}</p>
+      ) : (
+        <div class="grid gap-8 sm:grid-cols-2">
+          {sorted.map((post) => (
+            <article class="group flex flex-col overflow-hidden rounded-xl border border-subtle bg-elevated transition-all duration-200 hover:-translate-y-1 hover:border-accent/50">
+              {post.data.coverImage && (
+                <div class="aspect-video w-full overflow-hidden bg-base">
+                  <img
+                    src={post.data.coverImage}
+                    alt={`Cover for ${post.data.title}`}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              )}
+              <div class="flex flex-1 flex-col p-6">
+                <p class="text-xs text-muted">
+                  {new Date(post.data.publishedDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+                <h2 class="mt-2 text-xl font-semibold text-primary transition-colors group-hover:text-accent">
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                </h2>
+                <p class="mt-3 flex-1 text-sm text-secondary leading-relaxed">
+                  {post.data.summary}
+                </p>
+                <div class="mt-6 border-t border-subtle pt-4">
+                  <a
+                    href={`/blog/${post.id}`}
+                    class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+                  >
+                    {t.readMore} →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </main>
+</BaseLayout>

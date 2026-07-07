@@ -1,0 +1,39 @@
+{
+  "title": "Welcome to my portfolio blog",
+  "locale": "en",
+  "summary": "This is my very first blog post on this portfolio, built with Astro and Keystatic CMS.",
+  "publishedDate": "2026-07-07",
+  "coverImage": "",
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Hello! Welcome to my blog. Here, I'll be sharing my journey, technical tutorials, UI/UX design updates, and thoughts about web development."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "This blog is powered by "
+        },
+        {
+          "text": "Astro",
+          "bold": true
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "Keystatic CMS",
+          "bold": true
+        },
+        {
+          "text": ". It allows me to write articles in JSON/Markdown format and manage them directly through a secure local or Git-based editor."
+        }
+      ]
+    }
+  ]
+}

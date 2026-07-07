@@ -1,0 +1,39 @@
+{
+  "title": "Selamat datang di blog portofolio saya",
+  "locale": "id",
+  "summary": "Ini adalah artikel pertama saya di portofolio ini, dibuat menggunakan Astro dan Keystatic CMS.",
+  "publishedDate": "2026-07-07",
+  "coverImage": "",
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Halo! Selamat datang di blog saya. Di sini, saya akan membagikan perjalanan saya, tutorial teknis, pembaruan desain UI/UX, dan pemikiran seputar pengembangan web."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Blog ini ditenagai oleh "
+        },
+        {
+          "text": "Astro",
+          "bold": true
+        },
+        {
+          "text": " dan "
+        },
+        {
+          "text": "Keystatic CMS",
+          "bold": true
+        },
+        {
+          "text": ". Integrasi ini memudahkan saya untuk menulis artikel dalam format JSON/Markdown dan mengelolanya langsung melalui editor berbasis Git atau lokal yang aman."
+        }
+      ]
+    }
+  ]
+}

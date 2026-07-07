@@ -45,6 +45,14 @@ export const translations = {
     filterFrontend: 'Frontend Web',
     filterUiUx: 'UI/UX Design',
     filterFullstack: 'Fullstack / AI App',
+    // Blog
+    blog: 'Blog',
+    blogSubtitle: 'My latest thoughts, guides, and tech explorations.',
+    readMore: 'Read More',
+    emptyBlog: 'No blog posts found.',
+    backToBlog: 'Back to Blog',
+    publishedOn: 'Published on',
+    viewAllPosts: 'View All Posts',
     // 404
     pageNotFound: '404 — Page Not Found',
     pageNotFoundDesc: "The page you're looking for doesn't exist.",
@@ -98,6 +106,14 @@ export const translations = {
     filterFrontend: 'Frontend Web',
     filterUiUx: 'Desain UI/UX',
     filterFullstack: 'Fullstack / Aplikasi AI',
+    // Blog
+    blog: 'Blog',
+    blogSubtitle: 'Catatan, panduan, dan eksplorasi teknologi terbaru saya.',
+    readMore: 'Baca Selengkapnya',
+    emptyBlog: 'Belum ada artikel yang diterbitkan.',
+    backToBlog: 'Kembali ke Blog',
+    publishedOn: 'Diterbitkan pada',
+    viewAllPosts: 'Lihat Semua Artikel',
     // 404
     pageNotFound: '404 — Halaman Tidak Ditemukan',
     pageNotFoundDesc: "Halaman yang Anda cari tidak ada.",
