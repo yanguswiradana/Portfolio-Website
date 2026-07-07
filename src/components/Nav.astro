@@ -21,6 +21,7 @@ const t = translations[locale];
     scrolled: false,
     open: false,
     theme: 'dark',
+    colorTheme: 'orange',
     toggleTheme() {
       this.theme = this.theme === 'light' ? 'dark' : 'light';
       localStorage.setItem('theme', this.theme);
@@ -29,9 +30,24 @@ const t = translations[locale];
       } else {
         document.documentElement.classList.add('dark');
       }
+    },
+    changeColor(color) {
+      this.colorTheme = color;
+      localStorage.setItem('color-theme', color);
+      document.documentElement.classList.forEach(cls => {
+        if (cls.startsWith('theme-')) {
+          document.documentElement.classList.remove(cls);
+        }
+      });
+      if (color !== 'orange') {
+        document.documentElement.classList.add(`theme-${color}`);
+      }
     }
   }"
-  x-init="theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'"
+  x-init="
+    theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    colorTheme = localStorage.getItem('color-theme') || 'orange';
+  "
   x-on:scroll.window="scrolled = window.scrollY > 50"
   x-on:keydown.escape.window="open = false"
 >
@@ -83,6 +99,50 @@ const t = translations[locale];
           <Icon name="lucide:languages" width={14} height={14} aria-hidden="true" />
           <span>{locale === 'en' ? 'ID' : 'EN'}</span>
         </a>
+
+        <!-- Color Theme Picker (Desktop) -->
+        <div class="hidden items-center gap-1.5 mr-1 sm:flex bg-elevated border border-subtle rounded-lg px-2.5 h-8">
+          <button
+            type="button"
+            x-on:click="changeColor('orange')"
+            class="h-3 w-3 rounded-full bg-[#ff751f] ring-2 transition-all"
+            x-bind:class="colorTheme === 'orange' ? 'ring-primary scale-110' : 'ring-transparent hover:scale-110'"
+            title="Orange Accent"
+            aria-label="Orange Accent"
+          ></button>
+          <button
+            type="button"
+            x-on:click="changeColor('blue')"
+            class="h-3 w-3 rounded-full bg-[#3b82f6] ring-2 transition-all"
+            x-bind:class="colorTheme === 'blue' ? 'ring-primary scale-110' : 'ring-transparent hover:scale-110'"
+            title="Blue Accent"
+            aria-label="Blue Accent"
+          ></button>
+          <button
+            type="button"
+            x-on:click="changeColor('emerald')"
+            class="h-3 w-3 rounded-full bg-[#10b981] ring-2 transition-all"
+            x-bind:class="colorTheme === 'emerald' ? 'ring-primary scale-110' : 'ring-transparent hover:scale-110'"
+            title="Emerald Accent"
+            aria-label="Emerald Accent"
+          ></button>
+          <button
+            type="button"
+            x-on:click="changeColor('purple')"
+            class="h-3 w-3 rounded-full bg-[#8b5cf6] ring-2 transition-all"
+            x-bind:class="colorTheme === 'purple' ? 'ring-primary scale-110' : 'ring-transparent hover:scale-110'"
+            title="Purple Accent"
+            aria-label="Purple Accent"
+          ></button>
+          <button
+            type="button"
+            x-on:click="changeColor('rose')"
+            class="h-3 w-3 rounded-full bg-[#f43f5e] ring-2 transition-all"
+            x-bind:class="colorTheme === 'rose' ? 'ring-primary scale-110' : 'ring-transparent hover:scale-110'"
+            title="Rose Accent"
+            aria-label="Rose Accent"
+          ></button>
+        </div>
 
         <!-- Theme Toggle Button -->
         <button
@@ -208,6 +268,56 @@ const t = translations[locale];
               <span>Dark Mode</span>
             </span>
           </button>
+        </li>
+        <li class="px-4 py-3 border-t border-subtle/30 mt-2">
+          <span class="text-xs font-semibold uppercase tracking-wider text-muted block mb-2">Accent Color</span>
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              x-on:click="changeColor('orange')"
+              class="h-6 w-6 rounded-full bg-[#ff751f] ring-2 transition-all flex items-center justify-center text-zinc-950 font-bold text-xs"
+              x-bind:class="colorTheme === 'orange' ? 'ring-primary scale-110' : 'ring-transparent'"
+              aria-label="Orange Accent"
+            >
+              <span x-show="colorTheme === 'orange'">✓</span>
+            </button>
+            <button
+              type="button"
+              x-on:click="changeColor('blue')"
+              class="h-6 w-6 rounded-full bg-[#3b82f6] ring-2 transition-all flex items-center justify-center text-white font-bold text-xs"
+              x-bind:class="colorTheme === 'blue' ? 'ring-primary scale-110' : 'ring-transparent'"
+              aria-label="Blue Accent"
+            >
+              <span x-show="colorTheme === 'blue'">✓</span>
+            </button>
+            <button
+              type="button"
+              x-on:click="changeColor('emerald')"
+              class="h-6 w-6 rounded-full bg-[#10b981] ring-2 transition-all flex items-center justify-center text-white font-bold text-xs"
+              x-bind:class="colorTheme === 'emerald' ? 'ring-primary scale-110' : 'ring-transparent'"
+              aria-label="Emerald Accent"
+            >
+              <span x-show="colorTheme === 'emerald'">✓</span>
+            </button>
+            <button
+              type="button"
+              x-on:click="changeColor('purple')"
+              class="h-6 w-6 rounded-full bg-[#8b5cf6] ring-2 transition-all flex items-center justify-center text-white font-bold text-xs"
+              x-bind:class="colorTheme === 'purple' ? 'ring-primary scale-110' : 'ring-transparent'"
+              aria-label="Purple Accent"
+            >
+              <span x-show="colorTheme === 'purple'">✓</span>
+            </button>
+            <button
+              type="button"
+              x-on:click="changeColor('rose')"
+              class="h-6 w-6 rounded-full bg-[#f43f5e] ring-2 transition-all flex items-center justify-center text-white font-bold text-xs"
+              x-bind:class="colorTheme === 'rose' ? 'ring-primary scale-110' : 'ring-transparent'"
+              aria-label="Rose Accent"
+            >
+              <span x-show="colorTheme === 'rose'">✓</span>
+            </button>
+          </div>
         </li>
       </ul>
     </nav>

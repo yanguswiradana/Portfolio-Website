@@ -49,6 +49,11 @@ const { title, description, ogImage, locale = 'en' } = Astro.props;
       } else {
         document.documentElement.classList.add('dark');
       }
+
+      const colorTheme = localStorage.getItem('color-theme') || 'orange';
+      if (colorTheme !== 'orange') {
+        document.documentElement.classList.add(`theme-${colorTheme}`);
+      }
     </script>
 
     <!-- Alpine.js Intersect Plugin (must load before Alpine core) -->
@@ -93,6 +98,16 @@ const { title, description, ogImage, locale = 'en' } = Astro.props;
           document.documentElement.classList.remove('dark');
         } else {
           document.documentElement.classList.add('dark');
+        }
+
+        const colorTheme = localStorage.getItem('color-theme') || 'orange';
+        document.documentElement.classList.forEach(cls => {
+          if (cls.startsWith('theme-')) {
+            document.documentElement.classList.remove(cls);
+          }
+        });
+        if (colorTheme !== 'orange') {
+          document.documentElement.classList.add(`theme-${colorTheme}`);
         }
       });
     </script>
