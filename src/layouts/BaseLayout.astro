@@ -101,11 +101,8 @@ const { title, description, ogImage, locale = 'en' } = Astro.props;
         }
 
         const colorTheme = localStorage.getItem('color-theme') || 'orange';
-        document.documentElement.classList.forEach(cls => {
-          if (cls.startsWith('theme-')) {
-            document.documentElement.classList.remove(cls);
-          }
-        });
+        const themes = [...document.documentElement.classList].filter(cls => cls.startsWith('theme-'));
+        themes.forEach(cls => document.documentElement.classList.remove(cls));
         if (colorTheme !== 'orange') {
           document.documentElement.classList.add(`theme-${colorTheme}`);
         }

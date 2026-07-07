@@ -34,11 +34,8 @@ const t = translations[locale];
     changeColor(color) {
       this.colorTheme = color;
       localStorage.setItem('color-theme', color);
-      document.documentElement.classList.forEach(cls => {
-        if (cls.startsWith('theme-')) {
-          document.documentElement.classList.remove(cls);
-        }
-      });
+      const themes = [...document.documentElement.classList].filter(cls => cls.startsWith('theme-'));
+      themes.forEach(cls => document.documentElement.classList.remove(cls));
       if (color !== 'orange') {
         document.documentElement.classList.add(`theme-${color}`);
       }
