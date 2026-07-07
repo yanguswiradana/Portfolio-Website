@@ -9,21 +9,6 @@
 
 @layer base {
   :root {
-    --color-base: #0a0a0b;
-    --color-elevated: #111114;
-    --color-subtle: #1f1f23;
-    --color-primary: #fafafa;
-    --color-secondary: #a1a1aa;
-    --color-muted: #71717a;
-    --color-accent: #ff751f;
-    --color-accent-hover: #ff914d;
-    --color-success: #34d399;
-    --color-error: #f87171;
-
-    color-scheme: dark;
-  }
-
-  html.light {
     --color-base: #fcfcfd;
     --color-elevated: #f3f4f6;
     --color-subtle: #e5e7eb;
@@ -36,6 +21,21 @@
     --color-error: #ef4444;
 
     color-scheme: light;
+  }
+
+  html.dark {
+    --color-base: #0a0a0b;
+    --color-elevated: #111114;
+    --color-subtle: #1f1f23;
+    --color-primary: #fafafa;
+    --color-secondary: #a1a1aa;
+    --color-muted: #71717a;
+    --color-accent: #ff751f;
+    --color-accent-hover: #ff914d;
+    --color-success: #34d399;
+    --color-error: #f87171;
+
+    color-scheme: dark;
   }
 
   html {

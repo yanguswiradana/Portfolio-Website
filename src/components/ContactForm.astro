@@ -60,7 +60,7 @@ const t = translations[locale];
   novalidate
 >
   <div>
-    <label for="cf-name" class="mb-2 block text-sm font-medium text-white">
+    <label for="cf-name" class="mb-2 block text-sm font-medium text-primary">
       {t.nameLabel}
     </label>
     <input
@@ -71,13 +71,13 @@ const t = translations[locale];
       minlength="2"
       maxlength="100"
       autocomplete="name"
-      class="w-full rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
+      class="w-full rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-primary placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
       placeholder={t.namePlaceholder}
     />
   </div>
 
   <div>
-    <label for="cf-email" class="mb-2 block text-sm font-medium text-white">
+    <label for="cf-email" class="mb-2 block text-sm font-medium text-primary">
       {t.emailLabel}
     </label>
     <input
@@ -86,13 +86,13 @@ const t = translations[locale];
       name="email"
       required
       autocomplete="email"
-      class="w-full rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
+      class="w-full rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-primary placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
       placeholder={t.emailPlaceholder}
     />
   </div>
 
   <div>
-    <label for="cf-message" class="mb-2 block text-sm font-medium text-white">
+    <label for="cf-message" class="mb-2 block text-sm font-medium text-primary">
       {t.messageLabel}
     </label>
     <textarea
@@ -102,7 +102,7 @@ const t = translations[locale];
       minlength="10"
       maxlength="2000"
       rows="5"
-      class="w-full resize-y rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
+      class="w-full resize-y rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-primary placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
       placeholder={t.messagePlaceholder}
     ></textarea>
   </div>

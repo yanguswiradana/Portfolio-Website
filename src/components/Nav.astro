@@ -25,13 +25,13 @@ const t = translations[locale];
       this.theme = this.theme === 'light' ? 'dark' : 'light';
       localStorage.setItem('theme', this.theme);
       if (this.theme === 'light') {
-        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
       } else {
-        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
       }
     }
   }"
-  x-init="theme = document.documentElement.classList.contains('light') ? 'light' : 'dark'"
+  x-init="theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'"
   x-on:scroll.window="scrolled = window.scrollY > 50"
   x-on:keydown.escape.window="open = false"
 >

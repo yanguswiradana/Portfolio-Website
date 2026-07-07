@@ -45,9 +45,9 @@ const { title, description, ogImage, locale = 'en' } = Astro.props;
         return 'dark';
       })();
       if (theme === 'light') {
-        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
       } else {
-        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
       }
     </script>
 
@@ -90,9 +90,9 @@ const { title, description, ogImage, locale = 'en' } = Astro.props;
       document.addEventListener('astro:after-swap', () => {
         const isLight = localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
         if (isLight) {
-          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
         } else {
-          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
         }
       });
     </script>
