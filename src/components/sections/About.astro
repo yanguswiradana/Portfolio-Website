@@ -35,7 +35,7 @@ const socials = [
       x-intersect.once="$el.classList.add('is-visible')"
       class="reveal md:col-span-2 space-y-6"
     >
-      <p class="text-lg leading-relaxed text-zinc-400">{profile.bio}</p>
+      <p class="text-lg leading-relaxed text-secondary">{profile.bio}</p>
 
       <!-- Social Links -->
       <div class="flex items-center gap-4 pt-2">
@@ -60,10 +60,10 @@ const socials = [
             x-intersect.once="$el.classList.add('is-visible')"
             class="reveal rounded-xl border border-subtle bg-elevated p-4"
           >
-            <p class="text-xs font-medium uppercase tracking-wider text-zinc-600">
+            <p class="text-xs font-medium uppercase tracking-wider text-muted">
               {fact.label}
             </p>
-            <p class="mt-1 text-sm text-white">{fact.value}</p>
+            <p class="mt-1 text-sm text-primary">{fact.value}</p>
           </div>
         ))
       }

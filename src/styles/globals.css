@@ -23,6 +23,21 @@
     color-scheme: dark;
   }
 
+  html.light {
+    --color-base: #fcfcfd;
+    --color-elevated: #f3f4f6;
+    --color-subtle: #e5e7eb;
+    --color-primary: #0f0f11;
+    --color-secondary: #3f3f46;
+    --color-muted: #71717a;
+    --color-accent: #ff751f;
+    --color-accent-hover: #e05e0c;
+    --color-success: #10b981;
+    --color-error: #ef4444;
+
+    color-scheme: light;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;

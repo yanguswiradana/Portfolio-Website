@@ -28,14 +28,14 @@ const t = translations[locale];
   <h1
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal text-5xl font-semibold tracking-tight text-white md:text-7xl"
+    class="reveal text-5xl font-semibold tracking-tight text-primary md:text-7xl"
   >
     {profile.name}.
   </h1>
   <p
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal mt-6 max-w-2xl text-xl text-zinc-400 md:text-2xl"
+    class="reveal mt-6 max-w-2xl text-xl text-secondary md:text-2xl"
   >
     {profile.tagline}
   </p>
@@ -58,7 +58,7 @@ const t = translations[locale];
     href="#about"
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal mt-16 hidden w-fit items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-white md:inline-flex"
+    class="reveal mt-16 hidden w-fit items-center gap-2 text-sm text-muted transition-colors hover:text-primary md:inline-flex"
     aria-label="Scroll to about section"
   >
     <span>{t.scroll}</span>
