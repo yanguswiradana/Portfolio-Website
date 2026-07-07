@@ -68,6 +68,15 @@ const projectsSchema = {
   projects: fields.array(
     fields.object({
       title: fields.text({ label: 'Judul Project' }),
+      category: fields.select({
+        label: 'Kategori',
+        options: [
+          { label: 'Frontend Web', value: 'frontend' },
+          { label: 'UI/UX Design', value: 'ui-ux' },
+          { label: 'Fullstack / AI App', value: 'fullstack' },
+        ],
+        defaultValue: 'frontend',
+      }),
       description: fields.text({ label: 'Deskripsi', multiline: true }),
       image: fields.text({ label: 'Path Gambar' }),
       tags: fields.array(fields.text({ label: 'Tag / Tech' }), {

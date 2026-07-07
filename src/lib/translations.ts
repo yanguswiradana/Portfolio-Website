@@ -40,6 +40,11 @@ export const translations = {
     formSuccess: "Thanks! I'll get back to you within 48 hours.",
     formError: "Something went wrong. Please try again or",
     emailDirectly: "email me directly",
+    // Filters
+    all: 'All',
+    filterFrontend: 'Frontend Web',
+    filterUiUx: 'UI/UX Design',
+    filterFullstack: 'Fullstack / AI App',
     // 404
     pageNotFound: '404 — Page Not Found',
     pageNotFoundDesc: "The page you're looking for doesn't exist.",
@@ -88,6 +93,11 @@ export const translations = {
     formSuccess: "Terima kasih! Saya akan membalas pesan Anda dalam 48 jam.",
     formError: "Terjadi kesalahan. Silakan coba lagi atau",
     emailDirectly: "hubungi email saya langsung",
+    // Filters
+    all: 'Semua',
+    filterFrontend: 'Frontend Web',
+    filterUiUx: 'Desain UI/UX',
+    filterFullstack: 'Fullstack / Aplikasi AI',
     // 404
     pageNotFound: '404 — Halaman Tidak Ditemukan',
     pageNotFoundDesc: "Halaman yang Anda cari tidak ada.",
