@@ -1,7 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
-import { profile } from '~/data/profile';
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+const t = translations[locale];
 ---
 
 <section
@@ -13,7 +23,7 @@ import { profile } from '~/data/profile';
     x-intersect.once="$el.classList.add('is-visible')"
     class="reveal mb-4 text-sm font-medium uppercase tracking-widest text-accent"
   >
-    Hi, I'm
+    {t.hi}
   </p>
   <h1
     x-data
@@ -35,12 +45,12 @@ import { profile } from '~/data/profile';
     class="reveal mt-10 flex flex-wrap items-center gap-4"
   >
     <Button href="#projects" variant="primary" size="lg">
-      View Projects
+      {t.viewProjects}
       <Icon name="lucide:arrow-right" width={18} height={18} aria-hidden="true" />
     </Button>
     <Button href={profile.resumeUrl} variant="secondary" size="lg">
       <Icon name="lucide:download" width={18} height={18} aria-hidden="true" />
-      Download Resume
+      {t.downloadResume}
     </Button>
   </div>
 
@@ -51,7 +61,7 @@ import { profile } from '~/data/profile';
     class="reveal mt-16 hidden w-fit items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-white md:inline-flex"
     aria-label="Scroll to about section"
   >
-    <span>Scroll</span>
+    <span>{t.scroll}</span>
     <Icon
       name="lucide:chevron-down"
       width={16}

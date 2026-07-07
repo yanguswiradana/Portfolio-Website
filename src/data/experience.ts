@@ -1,3 +1,3 @@
-import experienceData from './experience.json';
+import experienceData from './en/experience.json';
 export const experience = experienceData.experience;
 export type Experience = typeof experience[number];

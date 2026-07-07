@@ -10,6 +10,13 @@ export default defineConfig({
   site: undefined,
   output: 'hybrid',
   adapter: vercel(),
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'id'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),

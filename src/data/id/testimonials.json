@@ -1,0 +1,20 @@
+{
+  "testimonials": [
+    {
+      "name": "John Doe",
+      "role": "CEO",
+      "company": "Acme Inc.",
+      "avatar": "",
+      "content": "Wiradana memberikan hasil kerja luar biasa pada platform web kami. Perhatiannya terhadap detail, komunikasi proaktif, dan kemampuannya menerjemahkan kebutuhan rumit menjadi antarmuka yang bersih dan fungsional membuatnya sangat menyenangkan untuk diajak bekerja sama.",
+      "link": "https://linkedin.com"
+    },
+    {
+      "name": "Jane Smith",
+      "role": "Product Manager",
+      "company": "Startup Co.",
+      "avatar": "",
+      "content": "Salah satu pengembang paling berbakat yang pernah bekerja sama dengan saya. Dia merilis MVP kami tepat waktu, menjaga kualitas kode tetap tinggi, dan menyumbangkan ide-ide cemerlang. Sangat direkomendasikan!",
+      "link": ""
+    }
+  ]
+}

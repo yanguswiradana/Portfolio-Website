@@ -1,0 +1,20 @@
+{
+  "certifications": [
+    {
+      "title": "Google AI Essentials",
+      "issuer": "Google",
+      "date": "2024",
+      "credentialUrl": "",
+      "icon": "simple-icons:google",
+      "color": "blue"
+    },
+    {
+      "title": "Bootcamp Pengembangan Web",
+      "issuer": "Udemy",
+      "date": "2023",
+      "credentialUrl": "",
+      "icon": "simple-icons:udemy",
+      "color": "purple"
+    }
+  ]
+}

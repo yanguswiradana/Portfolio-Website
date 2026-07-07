@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import PageContent from '~/components/PageContent.astro';
-import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
 import { SITE_URL } from '~/consts';
 ---
 
 <BaseLayout
-  title={profileEn.seo.title}
-  description={profileEn.seo.description}
+  title={profileId.seo.title}
+  description={profileId.seo.description}
   ogImage={`${SITE_URL}/og.png`}
-  locale="en"
+  locale="id"
 >
-  <PageContent locale="en" />
+  <PageContent locale="id" />
 </BaseLayout>

@@ -1,0 +1,23 @@
+{
+  "name": "I Wayan Agus Wiradana",
+  "role": "Frontend Developer & UI/UX Designer",
+  "tagline": "To Be and To Give.",
+  "location": "Denpasar, Bali, Indonesia",
+  "focus": "Junior web developer",
+  "currently": "Belajar AI & membangun proyek sampingan",
+  "bio": "Saya adalah seorang Junior Web Developer dengan ketertarikan mendalam pada Kecerdasan Buatan (AI). Saya senang membangun situs web yang indah dan fungsional, serta aktif mengeksplorasi cara mengembangkan, mengintegrasikan, dan mengoptimalkan solusi berbasis AI untuk menciptakan pengalaman digital yang inovatif.",
+  "avatarUrl": "/images/avatar.jpg",
+  "resumeUrl": "/resume.pdf",
+  "email": "yanguswiradana@gmail.com",
+  "socials": {
+    "github": "https://github.com/yanguswiradana",
+    "linkedin": "https://www.linkedin.com/in/i-wayan-agus-wiradana-037a4532b",
+    "twitter": "https://x.com/arcxcode",
+    "instagram": "https://www.instagram.com/arcxcode",
+    "website": "https://example.com"
+  },
+  "seo": {
+    "title": "Wiradana — Frontend Developer & UI/UX Designer",
+    "description": "Saya adalah seorang Junior Web Developer dengan ketertarikan mendalam pada Kecerdasan Buatan (AI). Saya senang membangun situs web yang indah dan fungsional."
+  }
+}

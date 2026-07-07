@@ -1,0 +1,46 @@
+{
+  "projects": [
+    {
+      "title": "BaliWasteAI",
+      "description": "BaliWasteAI adalah aplikasi web mobile-first cerdas berbasis dwibahasa yang dirancang untuk membantu warga dan pelaku usaha di Bali mengelola pembuangan sampah secara efisien. Dengan menyediakan data kapasitas tempat pembuangan sampah setempat (TPS) secara real-time dan mengintegrasikan Google Gemini 3.5 Flash AI untuk klasifikasi sampah instan, aplikasi ini mengurangi kemungkinan penolakan sampah dan penumpukan wadah sampah.",
+      "image": "/images/projects/BaliWasteAI.png",
+      "tags": [
+        "Nextjs",
+        "Typescript",
+        "Tailwind",
+        "Google Gemini 3.5 Flash AI",
+        "Google Maps Platform"
+      ],
+      "liveUrl": "https://bali-waste-ai.vercel.app/",
+      "githubUrl": "https://github.com/yanguswiradana/BaliWasteAI.git",
+      "featured": true
+    },
+    {
+      "title": "ReduktorDev",
+      "description": "ReduktorDev adalah perusahaan yang berspesialisasi dalam menyediakan layanan pengembangan web bagi bisnis. Kami membangun situs web dan aplikasi web khusus yang disesuaikan dengan kebutuhan spesifik klien kami. Kami juga menawarkan berbagai layanan pengembangan web lainnya, termasuk pemeliharaan situs web, desain ulang, dan optimalisasi situs web.",
+      "image": "/images/projects/rdk-dev.png",
+      "tags": [
+        "Next.js",
+        "React",
+        "Typescript",
+        "Tailwind"
+      ],
+      "liveUrl": "https://rdk-dev.vercel.app/",
+      "githubUrl": "https://github.com/yanguswiradana/rdk-dev.git",
+      "featured": true
+    },
+    {
+      "title": "RecodeID",
+      "description": "RecodeID adalah penyedia kursus/kelas online berbasis web yang berfokus pada pembelajaran logika menggunakan Python.",
+      "image": "/images/projects/recodeid.png",
+      "tags": [
+        "React",
+        "Typescript",
+        "Tailwind"
+      ],
+      "liveUrl": "https://recode-id.vercel.app/",
+      "githubUrl": "https://github.com/yanguswiradana/RecodeID.git",
+      "featured": true
+    }
+  ]
+}

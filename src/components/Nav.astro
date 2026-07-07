@@ -3,7 +3,17 @@ import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 import SocialIcon from '~/components/ui/SocialIcon.astro';
 import { NAV_LINKS } from '~/lib/nav';
-import { profile } from '~/data/profile';
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+const t = translations[locale];
 ---
 
 <div
@@ -23,7 +33,7 @@ import { profile } from '~/data/profile';
     >
       <!-- Logo -->
       <a
-        href="#hero"
+        href={locale === 'id' ? '/id#hero' : '#hero'}
         class="flex items-center gap-2 text-sm font-semibold text-white"
         aria-label={`${profile.name} — home`}
       >
@@ -37,11 +47,11 @@ import { profile } from '~/data/profile';
           NAV_LINKS.map((link) => (
             <li>
               <a
-                href={link.href}
+                href={locale === 'id' ? `/id${link.href}` : link.href}
                 data-nav-link
                 class="relative rounded-md px-3 py-2 text-sm text-zinc-400 transition-colors hover:text-white after:absolute after:-bottom-1 after:left-3 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-[calc(100%-1.5rem)]"
               >
-                {link.label}
+                {t[link.key]}
               </a>
             </li>
           ))
@@ -50,6 +60,17 @@ import { profile } from '~/data/profile';
 
       <!-- Right side actions -->
       <div class="flex items-center gap-2">
+        <!-- Language Switcher -->
+        <a
+          href={locale === 'en' ? '/id' : '/'}
+          class="inline-flex items-center gap-1.5 rounded-lg border border-subtle bg-elevated px-3 py-1.5 text-xs font-semibold text-zinc-400 transition-all hover:border-white/20 hover:text-white"
+          aria-label={locale === 'en' ? 'Switch to Indonesian' : 'Switch to English'}
+        >
+          <Icon name="lucide:languages" width={14} height={14} aria-hidden="true" />
+          <span>{locale === 'en' ? 'ID' : 'EN'}</span>
+        </a>
+
+        <!-- Resume Button -->
         <Button
           href={profile.resumeUrl}
           variant="ghost"
@@ -58,7 +79,7 @@ import { profile } from '~/data/profile';
           aria-label="Download resume"
         >
           <Icon name="lucide:download" width={16} height={16} aria-hidden="true" />
-          <span>Resume</span>
+          <span>{t.resume}</span>
         </Button>
 
         <!-- Hamburger (mobile) -->
@@ -124,11 +145,11 @@ import { profile } from '~/data/profile';
           NAV_LINKS.map((link) => (
             <li>
               <a
-                href={link.href}
+                href={locale === 'id' ? `/id${link.href}` : link.href}
                 x-on:click="open = false"
                 class="block rounded-lg px-4 py-3 text-base text-zinc-300 transition-colors hover:bg-subtle hover:text-white"
               >
-                {link.label}
+                {t[link.key]}
               </a>
             </li>
           ))
@@ -137,10 +158,10 @@ import { profile } from '~/data/profile';
           <a
             href={profile.resumeUrl}
             x-on:click="open = false"
-            class="mt-2 flex items-center gap-2 rounded-lg px-4 py-3 text-base text-zinc-300 transition-colors hover:bg-subtle hover:text-white"
+            class="flex items-center gap-2 rounded-lg px-4 py-3 text-base text-zinc-300 transition-colors hover:bg-subtle hover:text-white"
           >
             <Icon name="lucide:download" width={18} height={18} aria-hidden="true" />
-            <span>Download Resume</span>
+            <span>{t.downloadResume}</span>
           </a>
         </li>
       </ul>

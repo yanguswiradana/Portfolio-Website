@@ -1,7 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Section from '~/components/ui/Section.astro';
-import { projects } from '~/data/projects';
+import projectsEn from '~/data/en/projects.json';
+import projectsId from '~/data/id/projects.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const projects = locale === 'id' ? projectsId.projects : projectsEn.projects;
+const t = translations[locale];
 
 const sorted = [...projects].sort(
   (a, b) => Number(b.featured) - Number(a.featured)
@@ -32,8 +42,8 @@ function getTagColor(tag: string): string {
 
 <Section
   id="projects"
-  title="Projects"
-  subtitle="A few things I've built recently."
+  title={t.projects}
+  subtitle={t.projectsSubtitle}
 >
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     {

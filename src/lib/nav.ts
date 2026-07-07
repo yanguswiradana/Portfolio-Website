@@ -1,9 +1,9 @@
 export const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about', key: 'about' },
+  { href: '#skills', key: 'skills' },
+  { href: '#projects', key: 'projects' },
+  { href: '#experience', key: 'experience' },
+  { href: '#contact', key: 'contact' },
 ] as const;
 
 export type NavLink = (typeof NAV_LINKS)[number];

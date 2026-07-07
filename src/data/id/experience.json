@@ -1,0 +1,58 @@
+{
+  "experience": [
+    {
+      "company": "Acme Inc.",
+      "role": "Frontend Engineer Senior",
+      "location": "Remote",
+      "startDate": "Jan 2023",
+      "endDate": null,
+      "description": "Memimpin tim platform web, merilis fitur-fitur yang digunakan oleh puluhan ribu pelanggan setiap hari. Bertanggung jawab atas arsitektur frontend, performa, dan aksesibilitas.",
+      "highlights": [
+        "Mengurangi bundel JS sebesar 38% dengan bermigrasi ke Astro islands.",
+        "Membangun pustaka komponen ramah aksesibilitas (a11y-first) yang diadopsi oleh 4 tim.",
+        "Membimbing 3 junior engineer dalam rilis produksi pertama mereka."
+      ],
+      "tech": [
+        "Astro",
+        "React",
+        "TypeScript",
+        "Tailwind",
+        "PostgreSQL"
+      ],
+      "link": "https://example.com"
+    },
+    {
+      "company": "Startup Co.",
+      "role": "Pengembang Full-Stack",
+      "location": "Berlin, DE",
+      "startDate": "Jun 2021",
+      "endDate": "Des 2022",
+      "description": "Membangun dan meluncurkan MVP, kemudian menskalakannya hingga mencapai 50 ribu MAU. Bertanggung jawab atas berbagai peran — backend, frontend, infrastruktur, dan desain.",
+      "highlights": [
+        "Merancang model data awal dan meluncurkan API publik.",
+        "Membangun dashboard real-time menggunakan WebSockets.",
+        "Menyiapkan alur CI/CD dan sistem observabilitas dari awal."
+      ],
+      "tech": [
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "link": "https://example.com"
+    },
+    {
+      "company": "Agency Ltd.",
+      "role": "Pengembang Frontend",
+      "location": "London, UK",
+      "startDate": "Sep 2019",
+      "endDate": "Mei 2021",
+      "description": "Menyelesaikan situs pemasaran dan aplikasi web untuk berbagai klien B2B dan B2C di bidang fintech dan e-commerce.",
+      "tech": [
+        "React",
+        "Gatsby",
+        "Styled Components"
+      ]
+    }
+  ]
+}

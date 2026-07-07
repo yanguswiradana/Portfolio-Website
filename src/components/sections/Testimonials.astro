@@ -1,14 +1,22 @@
 ---
 import Section from '~/components/ui/Section.astro';
 import { Icon } from 'astro-icon/components';
-import testimonialsData from '~/data/testimonials.json';
+import testEn from '~/data/en/testimonials.json';
+import testId from '~/data/id/testimonials.json';
+import { translations } from '~/lib/translations';
 
-const { testimonials } = testimonialsData;
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const testimonials = locale === 'id' ? testId.testimonials : testEn.testimonials;
+const t = translations[locale];
 ---
 
-<Section id="testimonials" title="Kind Words">
+<Section id="testimonials" title={t.testimonials}>
   <div class="grid gap-6 md:grid-cols-2">
-    {testimonials.map((t, i) => (
+    {testimonials.map((test) => (
       <div
         x-data
         x-intersect.once="$el.classList.add('is-visible')"
@@ -31,29 +39,29 @@ const { testimonials } = testimonialsData;
 
         {/* Quote */}
         <blockquote class="flex-1 text-sm leading-relaxed text-zinc-400">
-          "{t.content}"
+          "{test.content}"
         </blockquote>
 
         {/* Author */}
         <div class="flex items-center gap-3 border-t border-subtle pt-4">
           {/* Avatar initials */}
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/20 text-sm font-bold text-accent">
-            {t.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
+            {test.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
           </div>
           <div>
-            {t.link ? (
+            {test.link ? (
               <a
-                href={t.link}
+                href={test.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-sm font-semibold text-white transition-colors hover:text-accent"
               >
-                {t.name}
+                {test.name}
               </a>
             ) : (
-              <p class="text-sm font-semibold text-white">{t.name}</p>
+              <p class="text-sm font-semibold text-white">{test.name}</p>
             )}
-            <p class="text-xs text-zinc-500">{t.role} · {t.company}</p>
+            <p class="text-xs text-zinc-500">{test.role} · {test.company}</p>
           </div>
         </div>
       </div>

@@ -8,13 +8,14 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  locale?: 'en' | 'id';
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, locale = 'en' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,11 +48,11 @@ const { title, description, ogImage } = Astro.props;
       class="fixed left-0 top-0 z-[9999] h-[2px] w-0 bg-gradient-to-r from-accent via-red-500 to-yellow-500 transition-none"
     ></div>
 
-    <Nav />
+    <Nav locale={locale} />
     <main id="main" class="pt-16">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
 
     <!-- Scroll Progress Script -->
     <script is:inline>

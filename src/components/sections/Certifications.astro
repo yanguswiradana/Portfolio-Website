@@ -1,9 +1,17 @@
 ---
 import Section from '~/components/ui/Section.astro';
 import { Icon } from 'astro-icon/components';
-import certificationsData from '~/data/certifications.json';
+import certsEn from '~/data/en/certifications.json';
+import certsId from '~/data/id/certifications.json';
+import { translations } from '~/lib/translations';
 
-const { certifications } = certificationsData;
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const certifications = locale === 'id' ? certsId.certifications : certsEn.certifications;
+const t = translations[locale];
 
 const colorMap: Record<string, { bg: string; text: string; border: string; icon: string }> = {
   blue:   { bg: 'bg-blue-500/10',   text: 'text-blue-400',   border: 'border-blue-500/20',   icon: 'text-blue-400'   },
@@ -14,7 +22,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string; icon:
 };
 ---
 
-<Section id="certifications" title="Certifications">
+<Section id="certifications" title={t.certifications}>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {certifications.map((cert) => {
       const colors = colorMap[cert.color] ?? colorMap.blue;
@@ -41,7 +49,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string; icon:
                   rel="noopener noreferrer"
                   class={`mt-2 inline-flex items-center gap-1 text-xs ${colors.text} transition-opacity hover:opacity-80`}
                 >
-                  <span>View credential</span>
+                  <span>{t.viewCredential}</span>
                   <Icon name="lucide:external-link" width={12} height={12} aria-hidden="true" />
                 </a>
               )}

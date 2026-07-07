@@ -1,12 +1,22 @@
 ---
 import Section from '~/components/ui/Section.astro';
 import SocialIcon from '~/components/ui/SocialIcon.astro';
-import { profile } from '~/data/profile';
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+const t = translations[locale];
 
 const facts = [
-  { label: 'Location', value: profile.location },
-  { label: 'Focus', value: profile.focus },
-  { label: 'Currently', value: profile.currently },
+  { label: t.location, value: profile.location },
+  { label: t.focus, value: profile.focus },
+  { label: t.currently, value: profile.currently },
 ];
 
 const socials = [
@@ -17,7 +27,7 @@ const socials = [
 ];
 ---
 
-<Section id="about" title="About">
+<Section id="about" title={t.about}>
   <div class="grid gap-10 md:grid-cols-3">
     <!-- Bio -->
     <div

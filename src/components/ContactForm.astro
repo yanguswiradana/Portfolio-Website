@@ -1,13 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Button from '~/components/ui/Button.astro';
+import { translations } from '~/lib/translations';
 
 interface Props {
   endpoint: string;
   email: string;
+  locale: 'en' | 'id';
 }
 
-const { endpoint, email } = Astro.props;
+const { endpoint, email, locale } = Astro.props;
+const t = translations[locale];
 ---
 
 <form
@@ -59,7 +61,7 @@ const { endpoint, email } = Astro.props;
 >
   <div>
     <label for="cf-name" class="mb-2 block text-sm font-medium text-white">
-      Name
+      {t.nameLabel}
     </label>
     <input
       type="text"
@@ -70,13 +72,13 @@ const { endpoint, email } = Astro.props;
       maxlength="100"
       autocomplete="name"
       class="w-full rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
-      placeholder="Your name"
+      placeholder={t.namePlaceholder}
     />
   </div>
 
   <div>
     <label for="cf-email" class="mb-2 block text-sm font-medium text-white">
-      Email
+      {t.emailLabel}
     </label>
     <input
       type="email"
@@ -85,13 +87,13 @@ const { endpoint, email } = Astro.props;
       required
       autocomplete="email"
       class="w-full rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
-      placeholder="you@example.com"
+      placeholder={t.emailPlaceholder}
     />
   </div>
 
   <div>
     <label for="cf-message" class="mb-2 block text-sm font-medium text-white">
-      Message
+      {t.messageLabel}
     </label>
     <textarea
       id="cf-message"
@@ -101,7 +103,7 @@ const { endpoint, email } = Astro.props;
       maxlength="2000"
       rows="5"
       class="w-full resize-y rounded-lg border border-subtle bg-elevated px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
-      placeholder="What's on your mind?"
+      placeholder={t.messagePlaceholder}
     ></textarea>
   </div>
 
@@ -122,7 +124,7 @@ const { endpoint, email } = Astro.props;
       class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-zinc-950 transition-all hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
     >
       <span x-show="!loading" class="inline-flex items-center gap-2">
-        Send Message
+        {t.sendMessage}
         <Icon name="lucide:send" width={16} height={16} aria-hidden="true" />
       </span>
       <span x-show="loading" class="inline-flex items-center gap-2">
@@ -130,7 +132,7 @@ const { endpoint, email } = Astro.props;
           <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-opacity="0.25" />
           <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" />
         </svg>
-        Sending…
+        {t.sending}
       </span>
     </button>
     <p class="text-xs text-zinc-600">Powered by Formspree</p>
@@ -145,7 +147,7 @@ const { endpoint, email } = Astro.props;
     class="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-400"
     role="status"
   >
-    ✅ Thanks! I'll get back to you within 48 hours.
+    ✅ {t.formSuccess}
   </div>
 
   <!-- Error -->
@@ -157,7 +159,7 @@ const { endpoint, email } = Astro.props;
     class="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
     role="alert"
   >
-    ❌ Something went wrong. Please try again or
-    <a href={`mailto:${email}`} class="underline hover:text-red-300">email me directly</a>.
+    ❌ {t.formError}
+    <a href={`mailto:${email}`} class="underline hover:text-red-300">{t.emailDirectly}</a>.
   </div>
 </form>

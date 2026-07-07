@@ -2,13 +2,23 @@
 import Section from '~/components/ui/Section.astro';
 import ContactForm from '~/components/ContactForm.astro';
 import { FORMSPREE_ENDPOINT } from '~/consts';
-import { profile } from '~/data/profile';
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+const t = translations[locale];
 ---
 
 <Section
   id="contact"
-  title="Get in Touch"
-  subtitle="Have a project, a question, or just want to say hi? Drop a message below."
+  title={t.getInTouch}
+  subtitle={t.formSubtitle}
 >
   <div class="grid gap-12 md:grid-cols-5">
     <div
@@ -16,7 +26,7 @@ import { profile } from '~/data/profile';
       x-intersect.once="$el.classList.add('is-visible')"
       class="reveal md:col-span-3"
     >
-      <ContactForm endpoint={FORMSPREE_ENDPOINT} email={profile.email} />
+      <ContactForm endpoint={FORMSPREE_ENDPOINT} email={profile.email} locale={locale} />
     </div>
     <aside
       x-data
@@ -27,7 +37,7 @@ import { profile } from '~/data/profile';
         <h3
           class="text-xs font-semibold uppercase tracking-wider text-muted"
         >
-          Or reach me directly
+          {t.reachMeDirectly}
         </h3>
         <div class="mt-2 flex flex-wrap items-center gap-3">
           <a
@@ -48,7 +58,7 @@ import { profile } from '~/data/profile';
             <span x-show="copied">
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span x-text="copied ? 'Copied!' : 'Copy'"></span>
+            <span x-text="copied ? t.copied : t.copy"></span>
           </button>
         </div>
       </div>
@@ -56,7 +66,7 @@ import { profile } from '~/data/profile';
         <h3
           class="text-xs font-semibold uppercase tracking-wider text-muted"
         >
-          Find me online
+          {t.findMe}
         </h3>
         <ul class="mt-3 space-y-2">
           <li>
@@ -110,7 +120,7 @@ import { profile } from '~/data/profile';
         </ul>
       </div>
       <p class="text-xs text-muted">
-        I never share your info. Form powered by Formspree.
+        {t.honeypotWarning}
       </p>
     </aside>
   </div>
