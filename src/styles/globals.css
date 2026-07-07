@@ -103,15 +103,7 @@
     @apply text-primary tracking-tight;
   }
 
-  ::selection {
-    background-color: var(--color-accent-selection) !important;
-    color: var(--color-primary) !important;
-  }
 
-  ::-moz-selection {
-    background-color: var(--color-accent-selection) !important;
-    color: var(--color-primary) !important;
-  }
 
   *:focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-base rounded-sm;
@@ -147,5 +139,17 @@
 
   .reveal {
     @apply translate-y-0 opacity-100;
+  }
+}
+
+/* Universal selection style overrides for all elements */
+*, *::before, *::after {
+  &::selection {
+    background-color: var(--color-accent-selection) !important;
+    color: var(--color-primary) !important;
+  }
+  &::-moz-selection {
+    background-color: var(--color-accent-selection) !important;
+    color: var(--color-primary) !important;
   }
 }
