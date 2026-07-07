@@ -8,87 +8,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-base: #fcfcfd;
-    --color-elevated: #f3f4f6;
-    --color-subtle: #e5e7eb;
-    --color-primary: #0f0f11;
-    --color-secondary: #3f3f46;
-    --color-muted: #71717a;
-    --color-accent: #ff751f;
-    --color-accent-hover: #e05e0c;
-    --color-accent-selection: rgba(255, 117, 31, 0.3);
-    --color-success: #10b981;
-    --color-error: #ef4444;
-
-    color-scheme: light;
-  }
-
-  html.dark {
-    --color-base: #0a0a0b;
-    --color-elevated: #111114;
-    --color-subtle: #1f1f23;
-    --color-primary: #fafafa;
-    --color-secondary: #a1a1aa;
-    --color-muted: #71717a;
-    --color-accent: #ff751f;
-    --color-accent-hover: #ff914d;
-    --color-accent-selection: rgba(255, 117, 31, 0.3);
-    --color-success: #34d399;
-    --color-error: #f87171;
-
-    color-scheme: dark;
-  }
-
-  /* Color Themes */
-  /* Blue */
-  html.theme-blue.dark {
-    --color-accent: #3b82f6;
-    --color-accent-hover: #60a5fa;
-    --color-accent-selection: rgba(59, 130, 246, 0.3);
-  }
-  html.theme-blue:not(.dark) {
-    --color-accent: #2563eb;
-    --color-accent-hover: #1d4ed8;
-    --color-accent-selection: rgba(37, 99, 235, 0.3);
-  }
-
-  /* Emerald */
-  html.theme-emerald.dark {
-    --color-accent: #10b981;
-    --color-accent-hover: #34d399;
-    --color-accent-selection: rgba(16, 185, 129, 0.3);
-  }
-  html.theme-emerald:not(.dark) {
-    --color-accent: #059669;
-    --color-accent-hover: #047857;
-    --color-accent-selection: rgba(5, 150, 105, 0.3);
-  }
-
-  /* Purple */
-  html.theme-purple.dark {
-    --color-accent: #8b5cf6;
-    --color-accent-hover: #a78bfa;
-    --color-accent-selection: rgba(139, 92, 246, 0.3);
-  }
-  html.theme-purple:not(.dark) {
-    --color-accent: #7c3aed;
-    --color-accent-hover: #6d28d9;
-    --color-accent-selection: rgba(124, 58, 237, 0.3);
-  }
-
-  /* Rose */
-  html.theme-rose.dark {
-    --color-accent: #f43f5e;
-    --color-accent-hover: #fb7185;
-    --color-accent-selection: rgba(244, 63, 94, 0.3);
-  }
-  html.theme-rose:not(.dark) {
-    --color-accent: #e11d48;
-    --color-accent-hover: #be123c;
-    --color-accent-selection: rgba(225, 29, 72, 0.3);
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -150,4 +69,90 @@
   }
 }
 
+/*
+ * =========================================================
+ * DESIGN TOKENS — outside @layer so PostCSS passes them through intact.
+ * Tailwind strips :not() selectors inside @layer base, so
+ * all CSS variable definitions live here at the root level.
+ * =========================================================
+ */
 
+/* ── Light mode defaults (no class needed) ── */
+:root {
+  --color-base: #fcfcfd;
+  --color-elevated: #f3f4f6;
+  --color-subtle: #e5e7eb;
+  --color-primary: #0f0f11;
+  --color-secondary: #3f3f46;
+  --color-muted: #71717a;
+  --color-accent: #ff751f;
+  --color-accent-hover: #e05e0c;
+  --color-accent-selection: rgba(255, 117, 31, 0.3);
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  color-scheme: light;
+}
+
+/* ── Dark mode ── */
+html.dark {
+  --color-base: #0a0a0b;
+  --color-elevated: #111114;
+  --color-subtle: #1f1f23;
+  --color-primary: #fafafa;
+  --color-secondary: #a1a1aa;
+  --color-muted: #71717a;
+  --color-accent: #ff751f;
+  --color-accent-hover: #ff914d;
+  --color-accent-selection: rgba(255, 117, 31, 0.3);
+  --color-success: #34d399;
+  --color-error: #f87171;
+  color-scheme: dark;
+}
+
+/* ── Accent: Blue ── */
+html.theme-blue {
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-selection: rgba(37, 99, 235, 0.3);
+}
+html.theme-blue.dark {
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-accent-selection: rgba(59, 130, 246, 0.3);
+}
+
+/* ── Accent: Emerald ── */
+html.theme-emerald {
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-accent-selection: rgba(5, 150, 105, 0.3);
+}
+html.theme-emerald.dark {
+  --color-accent: #10b981;
+  --color-accent-hover: #34d399;
+  --color-accent-selection: rgba(16, 185, 129, 0.3);
+}
+
+/* ── Accent: Purple ── */
+html.theme-purple {
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-selection: rgba(124, 58, 237, 0.3);
+}
+html.theme-purple.dark {
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #a78bfa;
+  --color-accent-selection: rgba(139, 92, 246, 0.3);
+}
+
+/* ── Accent: Rose ── */
+html.theme-rose {
+  --color-accent: #e11d48;
+  --color-accent-hover: #be123c;
+  --color-accent-selection: rgba(225, 29, 72, 0.3);
+}
+html.theme-rose.dark {
+  --color-accent: #f43f5e;
+  --color-accent-hover: #fb7185;
+  --color-accent-selection: rgba(244, 63, 94, 0.3);
+}
