@@ -1,57 +1,80 @@
 {
   "experience": [
     {
-      "company": "Acme Inc.",
-      "role": "Senior Frontend Engineer",
+      "company": "Freelance",
+      "role": "Freelance Web Developer",
       "location": "Remote",
-      "startDate": "Jan 2023",
+      "startDate": "Jan 2024",
       "endDate": null,
-      "description": "Lead the web platform team, shipping features used by tens of thousands of customers every day. Own frontend architecture, performance, and accessibility.",
+      "description": "Developed custom web applications to digitalize local business operations and inventory data management systems.",
       "highlights": [
-        "Reduced JS bundle by 38% by migrating to Astro islands.",
-        "Established an a11y-first component library adopted across 4 teams.",
-        "Mentored 3 junior engineers through their first production deploys."
+        "Built a real-time gas cylinder stock tracking system to accurately monitor inventory inflows and outflows.",
+        "Implemented an interactive admin dashboard to manage inventory records, minimizing manual data entry errors.",
+        "Managed independent deployment and database configurations for stable client-side usage."
       ],
       "tech": [
-        "Astro",
         "React",
-        "TypeScript",
-        "Tailwind",
-        "PostgreSQL"
-      ],
-      "link": "https://example.com"
-    },
-    {
-      "company": "Startup Co.",
-      "role": "Full-Stack Developer",
-      "location": "Berlin, DE",
-      "startDate": "Jun 2021",
-      "endDate": "Dec 2022",
-      "description": "Built and shipped the MVP, then scaled it to 50k MAU. Wore many hats — backend, frontend, infra, design.",
-      "highlights": [
-        "Designed the initial data model and shipped the public API.",
-        "Built a real-time dashboard with WebSockets.",
-        "Set up CI/CD and observability from scratch."
-      ],
-      "tech": [
-        "Next.js",
         "Node.js",
-        "PostgreSQL",
-        "Docker"
-      ],
-      "link": "https://example.com"
+        "Tailwind CSS",
+        "MySQL"
+      ]
     },
     {
-      "company": "Agency Ltd.",
-      "role": "Frontend Developer",
-      "location": "London, UK",
-      "startDate": "Sep 2019",
-      "endDate": "May 2021",
-      "description": "Delivered marketing sites and web apps for a roster of B2B and B2C clients across fintech and e-commerce.",
+      "company": "Bajra Media",
+      "role": "Collaborative Frontend Developer & Treasurer",
+      "location": "Bali, Indonesia (Remote)",
+      "startDate": "Jul 2023",
+      "endDate": "Dec 2023",
+      "description": "Collaborated within a digital product team to optimize web interface user experience while managing project financial administration.",
+      "highlights": [
+        "Served as a backup programmer focusing on frontend bug fixes and responsive layout improvements.",
+        "Managed project budget allocations and kept structured records of team expenditures.",
+        "Collaborated closely with team members to integrate code using Git workflows."
+      ],
       "tech": [
-        "React",
-        "Gatsby",
-        "Styled Components"
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Git",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Campus Sports & Gym Club",
+      "role": "Club President (Leadership & Management)",
+      "location": "On-Site",
+      "startDate": "Jan 2022",
+      "endDate": "Dec 2023",
+      "description": "Led the student organization for health and fitness, coordinated the executive committee, and managed gym facility memberships.",
+      "highlights": [
+        "Directed the executive team in planning routine fitness programs and organizing internal sports tournaments.",
+        "Supervised daily operations of gym facilities, including equipment maintenance for over 200 active members.",
+        "Developed crucial team management, public speaking, negotiation, and organizational problem-solving skills."
+      ],
+      "tech": [
+        "Leadership",
+        "Management",
+        "Communication"
+      ]
+    },
+    {
+      "company": "PT Balisoft Lintasmedia (PT Trigatra Cipta Sinergi)",
+      "role": "Web Developer Intern",
+      "location": "Bali, Indonesia",
+      "startDate": "Jan 2021",
+      "endDate": "Jun 2021",
+      "description": "Completed a 6-month industrial internship assisting in web application development and learning professional software house workflows.",
+      "highlights": [
+        "Assisted in developing static and dynamic web pages with HTML, CSS, and JavaScript/PHP matching project specifications.",
+        "Learned industry-standard clean coding practices, self-debugging techniques, and quickly adapted to new tech stacks.",
+        "Conducted user interface testing to ensure consistent rendering across different screen sizes and browsers."
+      ],
+      "tech": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP",
+        "MySQL"
       ]
     }
   ]

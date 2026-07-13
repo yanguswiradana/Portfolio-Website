@@ -1,57 +1,80 @@
 {
   "experience": [
     {
-      "company": "Acme Inc.",
-      "role": "Frontend Engineer Senior",
+      "company": "Freelance",
+      "role": "Pengembang Web Freelance",
       "location": "Remote",
-      "startDate": "Jan 2023",
+      "startDate": "Jan 2024",
       "endDate": null,
-      "description": "Memimpin tim platform web, merilis fitur-fitur yang digunakan oleh puluhan ribu pelanggan setiap hari. Bertanggung jawab atas arsitektur frontend, performa, dan aksesibilitas.",
+      "description": "Mengembangkan aplikasi web kustom untuk mendigitalisasi operasional bisnis lokal dan sistem manajemen data inventaris.",
       "highlights": [
-        "Mengurangi bundel JS sebesar 38% dengan bermigrasi ke Astro islands.",
-        "Membangun pustaka komponen ramah aksesibilitas (a11y-first) yang diadopsi oleh 4 tim.",
-        "Membimbing 3 junior engineer dalam rilis produksi pertama mereka."
+        "Membangun program tracking stok tabung gas secara real-time guna mempermudah pemantauan persediaan keluar-masuk secara akurat.",
+        "Mengimplementasikan dashboard panel admin interaktif untuk mengelola inventaris dan pelaporan data yang meminimalkan kesalahan manual.",
+        "Melakukan deployment mandiri dan konfigurasi basis data agar sistem siap pakai secara stabil oleh klien."
       ],
       "tech": [
-        "Astro",
         "React",
-        "TypeScript",
-        "Tailwind",
-        "PostgreSQL"
-      ],
-      "link": "https://example.com"
-    },
-    {
-      "company": "Startup Co.",
-      "role": "Pengembang Full-Stack",
-      "location": "Berlin, DE",
-      "startDate": "Jun 2021",
-      "endDate": "Des 2022",
-      "description": "Membangun dan meluncurkan MVP, kemudian menskalakannya hingga mencapai 50 ribu MAU. Bertanggung jawab atas berbagai peran — backend, frontend, infrastruktur, dan desain.",
-      "highlights": [
-        "Merancang model data awal dan meluncurkan API publik.",
-        "Membangun dashboard real-time menggunakan WebSockets.",
-        "Menyiapkan alur CI/CD dan sistem observabilitas dari awal."
-      ],
-      "tech": [
-        "Next.js",
         "Node.js",
-        "PostgreSQL",
-        "Docker"
-      ],
-      "link": "https://example.com"
+        "Tailwind CSS",
+        "MySQL"
+      ]
     },
     {
-      "company": "Agency Ltd.",
-      "role": "Pengembang Frontend",
-      "location": "London, UK",
-      "startDate": "Sep 2019",
-      "endDate": "Mei 2021",
-      "description": "Menyelesaikan situs pemasaran dan aplikasi web untuk berbagai klien B2B dan B2C di bidang fintech dan e-commerce.",
+      "company": "Bajra Media",
+      "role": "Pengembang Frontend (Kolaborasi) & Manajemen Keuangan",
+      "location": "Bali, Indonesia (Remote)",
+      "startDate": "Jul 2023",
+      "endDate": "Des 2023",
+      "description": "Berkolaborasi dalam tim pengembangan produk digital, mengoptimalkan kenyamanan antarmuka web, serta mengelola aspek keuangan operasional tim.",
+      "highlights": [
+        "Bertindak sebagai backup programmer dengan fokus utama pada perbaikan dan pengembangan halaman frontend yang responsif.",
+        "Mengelola alokasi anggaran proyek dan pembukuan kas tim secara transparan dan terdokumentasi rapi.",
+        "Bekerja sama erat dengan anggota tim untuk mengintegrasikan kode menggunakan alur kerja berbasis Git."
+      ],
       "tech": [
-        "React",
-        "Gatsby",
-        "Styled Components"
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Git",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "UKM Olahraga & Gym Kampus",
+      "role": "Ketua UKM (Kepemimpinan & Organisasi)",
+      "location": "On-Site",
+      "startDate": "Jan 2022",
+      "endDate": "Des 2023",
+      "description": "Memimpin organisasi kemahasiswaan di bidang kesehatan dan kebugaran fisik, mengkoordinir pengurus, serta mengelola keanggotaan fasilitas gym.",
+      "highlights": [
+        "Memimpin koordinasi pengurus harian dalam merancang program latihan rutin dan turnamen olahraga internal.",
+        "Mengawasi operasional harian fasilitas gym kampus, termasuk pemeliharaan alat olahraga demi kenyamanan 200+ anggota aktif.",
+        "Mengembangkan keterampilan manajemen tim, komunikasi publik, negosiasi, dan penyelesaian konflik organisasi."
+      ],
+      "tech": [
+        "Leadership",
+        "Management",
+        "Communication"
+      ]
+    },
+    {
+      "company": "PT Balisoft Lintasmedia (PT Trigatra Cipta Sinergi)",
+      "role": "Magang Pengembang Web",
+      "location": "Bali, Indonesia",
+      "startDate": "Jan 2021",
+      "endDate": "Jun 2021",
+      "description": "Melaksanakan magang industri selama 6 bulan untuk membantu pengembangan awal aplikasi web dan mempelajari workflow profesional software house.",
+      "highlights": [
+        "Membantu pengerjaan modul-modul web statis maupun dinamis berbasis HTML, CSS, dan JavaScript sesuai requirement proyek.",
+        "Mempelajari standar kualitas kode industri, debugging mandiri, serta adaptasi cepat terhadap teknologi baru.",
+        "Melakukan pengujian antarmuka pengguna (user interface testing) untuk memastikan web tampil konsisten di berbagai perangkat dan browser."
+      ],
+      "tech": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP",
+        "MySQL"
       ]
     }
   ]
