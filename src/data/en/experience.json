@@ -13,10 +13,10 @@
         "Handled system integration, database configurations, and independent deployments to cloud/hosting platforms for stable client-side usage."
       ],
       "tech": [
+        "Laravel",
         "React",
-        "Node.js",
-        "Tailwind CSS",
-        "MySQL"
+        "MySQL",
+        "Tailwind CSS"
       ]
     },
     {
@@ -32,10 +32,8 @@
         "Collaborated closely with team members to integrate code using Git workflows."
       ],
       "tech": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Git",
+        "React",
+        "TypeScript",
         "Tailwind CSS"
       ]
     },

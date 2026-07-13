@@ -13,10 +13,10 @@
         "Melakukan integrasi sistem, konfigurasi basis data, serta deployment mandiri ke platform cloud/hosting agar sistem siap pakai secara stabil."
       ],
       "tech": [
+        "Laravel",
         "React",
-        "Node.js",
-        "Tailwind CSS",
-        "MySQL"
+        "MySQL",
+        "Tailwind CSS"
       ]
     },
     {
@@ -32,10 +32,8 @@
         "Bekerja sama erat dengan anggota tim untuk mengintegrasikan kode menggunakan alur kerja berbasis Git."
       ],
       "tech": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Git",
+        "React",
+        "TypeScript",
         "Tailwind CSS"
       ]
     },
