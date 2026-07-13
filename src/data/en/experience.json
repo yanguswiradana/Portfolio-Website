@@ -6,11 +6,11 @@
       "location": "Remote",
       "startDate": "Jan 2024",
       "endDate": null,
-      "description": "Developed custom web applications to digitalize local business operations and inventory data management systems.",
+      "description": "Developed custom web applications and internal information systems to digitalize business operations and client data management.",
       "highlights": [
-        "Built a real-time gas cylinder stock tracking system to accurately monitor inventory inflows and outflows.",
-        "Implemented an interactive admin dashboard to manage inventory records, minimizing manual data entry errors.",
-        "Managed independent deployment and database configurations for stable client-side usage."
+        "Designed and built real-time internal transaction and inventory tracking systems tailored to specific client workflow requirements.",
+        "Implemented interactive admin dashboards for data visualization and reporting automation to improve operational efficiency.",
+        "Handled system integration, database configurations, and independent deployments to cloud/hosting platforms for stable client-side usage."
       ],
       "tech": [
         "React",

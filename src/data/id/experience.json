@@ -6,11 +6,11 @@
       "location": "Remote",
       "startDate": "Jan 2024",
       "endDate": null,
-      "description": "Mengembangkan aplikasi web kustom untuk mendigitalisasi operasional bisnis lokal dan sistem manajemen data inventaris.",
+      "description": "Mengembangkan aplikasi web kustom dan sistem informasi internal untuk mendigitalisasi operasional bisnis serta manajemen data klien.",
       "highlights": [
-        "Membangun program tracking stok tabung gas secara real-time guna mempermudah pemantauan persediaan keluar-masuk secara akurat.",
-        "Mengimplementasikan dashboard panel admin interaktif untuk mengelola inventaris dan pelaporan data yang meminimalkan kesalahan manual.",
-        "Melakukan deployment mandiri dan konfigurasi basis data agar sistem siap pakai secara stabil oleh klien."
+        "Merancang dan membangun sistem pengelolaan data inventaris dan alur transaksi internal secara real-time sesuai kebutuhan alur kerja spesifik klien.",
+        "Mengimplementasikan dashboard admin interaktif untuk visualisasi data dan otomatisasi pelaporan guna meningkatkan efisiensi operasional.",
+        "Melakukan integrasi sistem, konfigurasi basis data, serta deployment mandiri ke platform cloud/hosting agar sistem siap pakai secara stabil."
       ],
       "tech": [
         "React",
