@@ -2,6 +2,7 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { translations } from '~/lib/translations';
+import profileId from '~/data/id/profile.json';
 
 const locale = 'id';
 const t = translations[locale];
@@ -16,7 +17,7 @@ const sorted = posts.sort(
 );
 ---
 
-<BaseLayout title={`${t.blog} — Portofolio`} description={t.blogSubtitle} locale={locale}>
+<BaseLayout title={`${t.blog} — ${profileId.name}`} description={t.blogSubtitle} locale={locale}>
   <main class="mx-auto max-w-4xl px-6 py-24 md:py-32">
     <!-- Header -->
     <header class="mb-12 max-w-2xl">
