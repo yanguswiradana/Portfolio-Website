@@ -59,22 +59,21 @@
     },
     {
       "company": "PT Balisoft Lintasmedia (PT Trigatra Cipta Sinergi)",
-      "role": "Web Developer Intern",
+      "role": "System Support & QA Intern",
       "location": "Bali, Indonesia",
       "startDate": "Jan 2021",
       "endDate": "Jun 2021",
-      "description": "Completed a 6-month industrial internship assisting in web application development and learning professional software house workflows.",
+      "description": "Completed a 6-month industrial internship focusing on application quality assurance (QA) and technical support for internal systems.",
       "highlights": [
-        "Assisted in developing static and dynamic web pages with HTML, CSS, and JavaScript/PHP matching project specifications.",
-        "Learned industry-standard clean coding practices, self-debugging techniques, and quickly adapted to new tech stacks.",
-        "Conducted user interface testing to ensure consistent rendering across different screen sizes and browsers."
+        "Conducted functional testing on various internal software products and applications.",
+        "Analyzed, tracked, and reported bug findings in a detailed and structured manner to facilitate developer debugging.",
+        "Assisted in daily system support operations to ensure smooth application workflows for users."
       ],
       "tech": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "PHP",
-        "MySQL"
+        "QA Testing",
+        "Bug Reporting",
+        "System Support",
+        "Technical Documentation"
       ]
     }
   ]

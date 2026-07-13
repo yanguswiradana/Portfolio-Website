@@ -59,22 +59,21 @@
     },
     {
       "company": "PT Balisoft Lintasmedia (PT Trigatra Cipta Sinergi)",
-      "role": "Magang Pengembang Web",
+      "role": "Magang System Support & QA",
       "location": "Bali, Indonesia",
       "startDate": "Jan 2021",
       "endDate": "Jun 2021",
-      "description": "Melaksanakan magang industri selama 6 bulan untuk membantu pengembangan awal aplikasi web dan mempelajari workflow profesional software house.",
+      "description": "Melaksanakan magang industri selama 6 bulan yang berfokus pada pengujian kualitas aplikasi (Quality Assurance) serta dukungan teknis sistem internal perusahaan.",
       "highlights": [
-        "Membantu pengerjaan modul-modul web statis maupun dinamis berbasis HTML, CSS, dan JavaScript sesuai requirement proyek.",
-        "Mempelajari standar kualitas kode industri, debugging mandiri, serta adaptasi cepat terhadap teknologi baru.",
-        "Melakukan pengujian antarmuka pengguna (user interface testing) untuk memastikan web tampil konsisten di berbagai perangkat dan browser."
+        "Melakukan pengujian fungsionalitas (functional testing) pada berbagai produk aplikasi internal perusahaan.",
+        "Menganalisis, merekam, dan melaporkan temuan bug secara detail dan terstruktur guna mempermudah proses debugging tim developer.",
+        "Membantu operasional harian sebagai sistem support untuk menjamin kelancaran alur kerja aplikasi bagi pengguna."
       ],
       "tech": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "PHP",
-        "MySQL"
+        "QA Testing",
+        "Bug Reporting",
+        "System Support",
+        "Technical Documentation"
       ]
     }
   ]
