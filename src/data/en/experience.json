@@ -1,10 +1,67 @@
 {
   "experience": [
     {
+      "company": "Inkubator Bisnis INSTIKI",
+      "role": "Publication, Documentation & Technical Operator",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "2026",
+      "endDate": "2026",
+      "description": "Managed end-to-end event documentation and served as the lead technical operator for the IDEASI 2026 event.",
+      "highlights": [
+        "Designed promotional materials to increase event awareness and attendee engagement.",
+        "Managed live audio-visual setups during the main event to ensure seamless speaker presentations."
+      ],
+      "tech": [
+        "Event Documentation",
+        "Technical Operations",
+        "Audio-Visual Setup"
+      ]
+    },
+    {
+      "company": "INSTIKI Body Healthy & Body Building Club",
+      "role": "Club President (Leadership & Management)",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "Jul 2025",
+      "endDate": "Jul 2026",
+      "description": "Led the campus health and fitness student organization at INSTIKI, coordinated the executive board, and managed the campus gym facilities for the university community.",
+      "highlights": [
+        "Directed the executive board and 60+ active members in organizing routine campus fitness programs.",
+        "Served as the Chairman of an International Seminar organized by the club, successfully managing event planning, budget, and execution.",
+        "Supervised daily gym facility operations and routine fitness equipment maintenance for all campus users."
+      ],
+      "tech": [
+        "Leadership",
+        "Event Management",
+        "Public Speaking",
+        "Team Coordination"
+      ]
+    },
+    {
+      "company": "UKM INSTIKI Developer Club",
+      "role": "Fundraising Committee Member",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "2025",
+      "endDate": "2025",
+      "description": "Planned and executed creative fundraising initiatives to financially support the International Seminar 2025.",
+      "highlights": [
+        "Collaborated effectively with team members to secure sponsorships and manage event budgets.",
+        "Ensured all financial targets were met to guarantee the success of the seminar."
+      ],
+      "tech": [
+        "Fundraising",
+        "Sponsorship",
+        "Event Management"
+      ]
+    },
+    {
       "company": "Freelance",
       "role": "Freelance Web Developer",
+      "category": "work",
       "location": "Remote",
-      "startDate": "Jan 2024",
+      "startDate": "2024",
       "endDate": null,
       "description": "Developed custom web applications and internal information systems to digitalize business operations and client data management.",
       "highlights": [
@@ -20,11 +77,29 @@
       ]
     },
     {
+      "company": "UKM FPK Kemahkris",
+      "role": "Fundraising Committee Member",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "2024",
+      "endDate": "2024",
+      "description": "Organized and executed fundraising strategies to support the 2024 Christmas Event operations.",
+      "highlights": [
+        "Worked alongside committee members to gather funds and secure necessary event resources."
+      ],
+      "tech": [
+        "Fundraising",
+        "Teamwork",
+        "Event Planning"
+      ]
+    },
+    {
       "company": "Bajra Media",
       "role": "Collaborative Frontend Developer & Treasurer",
+      "category": "work",
       "location": "Bali, Indonesia (Remote)",
-      "startDate": "Jul 2023",
-      "endDate": "Dec 2023",
+      "startDate": "2023",
+      "endDate": null,
       "description": "Collaborated within a digital product team to optimize web interface user experience while managing project financial administration.",
       "highlights": [
         "Served as a backup programmer focusing on frontend bug fixes and responsive layout improvements.",
@@ -38,30 +113,12 @@
       ]
     },
     {
-      "company": "INSTIKI Body Healthy & Body Building Club",
-      "role": "Club President (Leadership & Management)",
-      "location": "Denpasar, Bali",
-      "startDate": "Jan 2022",
-      "endDate": "Dec 2023",
-      "description": "Led the campus health and fitness student organization at INSTIKI, coordinated the executive board, and managed the campus gym facilities for the university community.",
-      "highlights": [
-        "Directed the executive board and 60+ active members in organizing routine campus fitness programs.",
-        "Served as the Chairman of an International Seminar organized by the club, successfully managing event planning, budget, and execution.",
-        "Supervised daily gym facility operations and routine fitness equipment maintenance for all campus users."
-      ],
-      "tech": [
-        "Leadership",
-        "Event Management",
-        "Public Speaking",
-        "Team Coordination"
-      ]
-    },
-    {
       "company": "PT Balisoft Lintasmedia (PT Trigatra Cipta Sinergi)",
       "role": "System Support & QA Intern",
+      "category": "work",
       "location": "Bali, Indonesia",
-      "startDate": "Jan 2021",
-      "endDate": "Jun 2021",
+      "startDate": "Mar 2023",
+      "endDate": "Aug 2023",
       "description": "Completed a 6-month industrial internship focusing on application quality assurance (QA) and technical support for internal systems.",
       "highlights": [
         "Conducted functional testing on various internal software products and applications.",

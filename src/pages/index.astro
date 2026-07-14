@@ -8,7 +8,7 @@ import { SITE_URL } from '~/consts';
 <BaseLayout
   title={profileEn.seo.title}
   description={profileEn.seo.description}
-  ogImage={`${SITE_URL}/og.png`}
+  ogImage={`${SITE_URL}${profileEn.seo.ogImage || '/og.png'}`}
   locale="en"
 >
   <PageContent locale="en" />

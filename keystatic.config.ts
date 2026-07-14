@@ -99,6 +99,14 @@ const experienceSchema = {
     fields.object({
       company: fields.text({ label: 'Perusahaan' }),
       role: fields.text({ label: 'Jabatan / Role' }),
+      category: fields.select({
+        label: 'Kategori',
+        options: [
+          { label: 'Kerja (Work Experience)', value: 'work' },
+          { label: 'Organisasi (Organizational)', value: 'organization' },
+        ],
+        defaultValue: 'work',
+      }),
       location: fields.text({ label: 'Lokasi (Opsional)' }),
       startDate: fields.text({ label: 'Tanggal Mulai' }),
       endDate: fields.text({ label: 'Tanggal Selesai (Kosongkan jika masih aktif)' }),

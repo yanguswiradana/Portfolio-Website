@@ -1,10 +1,67 @@
 {
   "experience": [
     {
+      "company": "Inkubator Bisnis INSTIKI",
+      "role": "Publikasi, Dokumentasi & Operator Teknis",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "2026",
+      "endDate": "2026",
+      "description": "Mengelola seluruh dokumentasi acara dan bertugas sebagai operator teknis utama untuk acara IDEASI 2026.",
+      "highlights": [
+        "Mendesain materi promosi untuk meningkatkan kesadaran (awareness) dan partisipasi peserta acara.",
+        "Mengelola perangkat audio-visual secara langsung selama acara utama untuk memastikan presentasi pembicara berjalan lancar."
+      ],
+      "tech": [
+        "Event Documentation",
+        "Technical Operations",
+        "Audio-Visual Setup"
+      ]
+    },
+    {
+      "company": "UKM Body Healthy & Body Building INSTIKI",
+      "role": "Ketua UKM (Kepemimpinan & Organisasi)",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "Jul 2025",
+      "endDate": "Jul 2026",
+      "description": "Memimpin organisasi kemahasiswaan bidang kesehatan dan kebugaran di INSTIKI, mengoordinir pengurus, serta mengelola fasilitas gym gratis bagi warga kampus.",
+      "highlights": [
+        "Memimpin koordinasi pengurus harian dan 60+ anggota aktif dalam merancang program olahraga rutin.",
+        "Bertindak sebagai Ketua Panitia Seminar Internasional yang diselenggarakan oleh UKM, sukses mengelola kepanitiaan dari perencanaan hingga pelaksanaan.",
+        "Mengawasi operasional harian fasilitas gym kampus, termasuk pemeliharaan alat kebugaran demi kenyamanan seluruh pengguna."
+      ],
+      "tech": [
+        "Leadership",
+        "Event Management",
+        "Public Speaking",
+        "Team Coordination"
+      ]
+    },
+    {
+      "company": "UKM INSTIKI Developer Club",
+      "role": "Anggota Divisi Penggalian Dana",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "2025",
+      "endDate": "2025",
+      "description": "Merencanakan dan menjalankan inisiatif penggalangan dana kreatif untuk mendukung pembiayaan Seminar Internasional 2025.",
+      "highlights": [
+        "Berkolaborasi dengan anggota tim untuk mencari sponsor dan mengelola anggaran acara.",
+        "Memastikan seluruh target pendanaan tercapai demi kesuksesan pelaksanaan seminar."
+      ],
+      "tech": [
+        "Fundraising",
+        "Sponsorship",
+        "Event Management"
+      ]
+    },
+    {
       "company": "Freelance",
       "role": "Pengembang Web Freelance",
+      "category": "work",
       "location": "Remote",
-      "startDate": "Jan 2024",
+      "startDate": "2024",
       "endDate": null,
       "description": "Mengembangkan aplikasi web kustom dan sistem informasi internal untuk mendigitalisasi operasional bisnis serta manajemen data klien.",
       "highlights": [
@@ -20,11 +77,29 @@
       ]
     },
     {
+      "company": "UKM FPK Kemahkris",
+      "role": "Anggota Divisi Penggalian Dana",
+      "category": "organization",
+      "location": "Denpasar, Bali",
+      "startDate": "2024",
+      "endDate": "2024",
+      "description": "Menyusun dan melaksanakan strategi penggalangan dana untuk mendukung operasional Acara Perayaan Natal 2024.",
+      "highlights": [
+        "Bekerja sama dengan panitia lain untuk mengumpulkan dana dan memastikan ketersediaan sumber daya acara."
+      ],
+      "tech": [
+        "Fundraising",
+        "Teamwork",
+        "Event Planning"
+      ]
+    },
+    {
       "company": "Bajra Media",
       "role": "Pengembang Frontend (Kolaborasi) & Manajemen Keuangan",
+      "category": "work",
       "location": "Bali, Indonesia (Remote)",
-      "startDate": "Jul 2023",
-      "endDate": "Des 2023",
+      "startDate": "2023",
+      "endDate": null,
       "description": "Berkolaborasi dalam tim pengembangan produk digital, mengoptimalkan kenyamanan antarmuka web, serta mengelola aspek keuangan operasional tim.",
       "highlights": [
         "Bertindak sebagai backup programmer dengan fokus utama pada perbaikan dan pengembangan halaman frontend yang responsif.",
@@ -38,30 +113,12 @@
       ]
     },
     {
-      "company": "UKM Body Healthy & Body Building INSTIKI",
-      "role": "Ketua UKM (Kepemimpinan & Organisasi)",
-      "location": "Denpasar, Bali",
-      "startDate": "Jan 2022",
-      "endDate": "Des 2023",
-      "description": "Memimpin organisasi kemahasiswaan bidang kesehatan dan kebugaran di INSTIKI, mengoordinir pengurus, serta mengelola fasilitas gym gratis bagi warga kampus.",
-      "highlights": [
-        "Memimpin koordinasi pengurus harian dan 60+ anggota aktif dalam merancang program olahraga rutin.",
-        "Bertindak sebagai Ketua Panitia Seminar Internasional yang diselenggarakan oleh UKM, sukses mengelola kepanitiaan dari perencanaan hingga pelaksanaan.",
-        "Mengawasi operasional harian fasilitas gym kampus, termasuk pemeliharaan alat kebugaran demi kenyamanan seluruh pengguna."
-      ],
-      "tech": [
-        "Leadership",
-        "Event Management",
-        "Public Speaking",
-        "Team Coordination"
-      ]
-    },
-    {
       "company": "PT Balisoft Lintasmedia (PT Trigatra Cipta Sinergi)",
       "role": "Magang System Support & QA",
+      "category": "work",
       "location": "Bali, Indonesia",
-      "startDate": "Jan 2021",
-      "endDate": "Jun 2021",
+      "startDate": "Mar 2023",
+      "endDate": "Agu 2023",
       "description": "Melaksanakan magang industri selama 6 bulan yang berfokus pada pengujian kualitas aplikasi (Quality Assurance) serta dukungan teknis sistem internal perusahaan.",
       "highlights": [
         "Melakukan pengujian fungsionalitas (functional testing) pada berbagai produk aplikasi internal perusahaan.",

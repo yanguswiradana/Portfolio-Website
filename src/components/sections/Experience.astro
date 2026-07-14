@@ -19,19 +19,54 @@ const t = translations[locale];
   title={t.experience}
   subtitle={t.experienceSubtitle}
 >
-  <ol class="relative space-y-12 border-l border-subtle pl-8 md:pl-12">
-    {
-      experience.map((entry) => (
-        <li
-          x-data
-          x-intersect.once="$el.classList.add('is-visible')"
-          class="reveal relative"
-        >
+  <div x-data="{ activeFilter: 'all' }">
+    <!-- Filter Tabs Buttons -->
+    <div class="mb-10 flex flex-wrap items-center gap-2">
+      <button
+        type="button"
+        x-on:click="activeFilter = 'all'"
+        x-bind:class="activeFilter === 'all' ? 'bg-accent text-zinc-950 font-semibold' : 'border border-subtle bg-elevated text-secondary hover:border-accent hover:text-primary'"
+        class="rounded-lg px-4 py-2 text-sm transition-all duration-200"
+      >
+        {t.all}
+      </button>
+      <button
+        type="button"
+        x-on:click="activeFilter = 'work'"
+        x-bind:class="activeFilter === 'work' ? 'bg-accent text-zinc-950 font-semibold' : 'border border-subtle bg-elevated text-secondary hover:border-accent hover:text-primary'"
+        class="rounded-lg px-4 py-2 text-sm transition-all duration-200"
+      >
+        {t.filterWork}
+      </button>
+      <button
+        type="button"
+        x-on:click="activeFilter = 'organization'"
+        x-bind:class="activeFilter === 'organization' ? 'bg-accent text-zinc-950 font-semibold' : 'border border-subtle bg-elevated text-secondary hover:border-accent hover:text-primary'"
+        class="rounded-lg px-4 py-2 text-sm transition-all duration-200"
+      >
+        {t.filterOrganization}
+      </button>
+    </div>
+
+    <ol class="relative space-y-12 border-l border-subtle pl-8 md:pl-12">
+      {
+        experience.map((entry) => (
+          <div
+            x-show={`activeFilter === 'all' || activeFilter === '${entry.category}'`}
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+          >
+            <li
+              x-data
+              x-intersect.once="$el.classList.add('is-visible')"
+              class="reveal relative group -ml-4 p-4 rounded-xl transition-all duration-300 hover:bg-elevated/50 hover:shadow-sm"
+            >
           <span
-            class="absolute -left-[2.05rem] top-1.5 inline-block h-3 w-3 rounded-full bg-accent ring-4 ring-base md:-left-[3.05rem]"
+            class="absolute left-[1.05rem] top-5 sm:left-[0.05rem] inline-block h-3 w-3 rounded-full bg-accent ring-4 ring-base transition-transform duration-300 group-hover:scale-150 group-hover:ring-accent/20 md:left-[-0.95rem]"
             aria-hidden="true"
           />
-          <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+          <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 mt-1">
             <h3 class="text-lg font-semibold text-primary">
               {entry.role}
               <span class="font-normal text-muted"> @ </span>
@@ -70,8 +105,10 @@ const t = translations[locale];
               ))}
             </div>
           )}
-        </li>
-      ))
-    }
-  </ol>
+            </li>
+          </div>
+        ))
+      }
+    </ol>
+  </div>
 </Section>

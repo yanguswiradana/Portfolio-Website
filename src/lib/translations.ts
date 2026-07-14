@@ -45,6 +45,8 @@ export const translations = {
     filterFrontend: 'Frontend Web',
     filterUiUx: 'UI/UX Design',
     filterFullstack: 'Fullstack / AI App',
+    filterWork: 'Work Experience',
+    filterOrganization: 'Organizational Experience',
     // Blog
     blog: 'Blog',
     blogSubtitle: 'My latest thoughts, guides, and tech explorations.',
@@ -106,6 +108,8 @@ export const translations = {
     filterFrontend: 'Frontend Web',
     filterUiUx: 'Desain UI/UX',
     filterFullstack: 'Fullstack / Aplikasi AI',
+    filterWork: 'Pengalaman Kerja',
+    filterOrganization: 'Pengalaman Organisasi',
     // Blog
     blog: 'Blog',
     blogSubtitle: 'Catatan, panduan, dan eksplorasi teknologi terbaru saya.',

@@ -7,17 +7,17 @@
   "currently": "Learning AI & building side projects",
   "bio": "I am a Junior Web Developer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and actively exploring how to develop, integrate, and optimize AI-driven solutions to create innovative digital experiences.",
   "avatarUrl": "/images/avatar.jpg",
-  "resumeUrl": "/resume.pdf",
+  "resumeUrl": "/cv.pdf",
   "email": "yanguswiradana@gmail.com",
   "socials": {
     "github": "https://github.com/yanguswiradana",
     "linkedin": "https://www.linkedin.com/in/i-wayan-agus-wiradana-037a4532b",
     "twitter": "https://x.com/arcxcode",
-    "instagram": "https://www.instagram.com/arcxcode",
-    "website": "https://example.com"
+    "instagram": "https://www.instagram.com/arcxcode"
   },
   "seo": {
     "title": "I Wayan Agus Wiradana — Junior Web Developer",
-    "description": "I am a Junior Web Developer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and integrating AI-driven solutions."
+    "description": "I am a Junior Web Developer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and integrating AI-driven solutions.",
+    "ogImage": "/og.png"
   }
 }

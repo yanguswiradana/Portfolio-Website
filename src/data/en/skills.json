@@ -19,7 +19,6 @@
       "skills": [
         { "name": "Astro" },
         { "name": "React" },
-        { "name": "Next.js" },
         { "name": "Tailwind CSS" },
         { "name": "HTML / CSS" }
       ]

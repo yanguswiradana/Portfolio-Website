@@ -46,11 +46,33 @@
 
   /* Alpine.js scroll-reveal animation */
   .reveal {
-    @apply translate-y-4 opacity-0 transition-all duration-700 ease-out;
+    @apply opacity-0 transition-all duration-[1000ms];
+    transform: translateY(30px) scale(0.98);
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal.is-visible {
-    @apply translate-y-0 opacity-100;
+    @apply opacity-100;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Stagger delays for reveal */
+  .reveal-delay-100 { transition-delay: 100ms; }
+  .reveal-delay-200 { transition-delay: 200ms; }
+  .reveal-delay-300 { transition-delay: 300ms; }
+  .reveal-delay-400 { transition-delay: 400ms; }
+
+  /* Gradient text utility */
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-accent to-accent-hover;
+  }
+
+  /* Card hover effect */
+  .card-hover-effect {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1;
+  }
+  .card-hover-effect:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--color-accent-selection), 0 4px 20px -2px var(--color-accent-selection);
   }
 }
 
@@ -85,9 +107,9 @@
   --color-primary: #0f0f11;
   --color-secondary: #3f3f46;
   --color-muted: #71717a;
-  --color-accent: #ff751f;
-  --color-accent-hover: #e05e0c;
-  --color-accent-selection: rgba(255, 117, 31, 0.3);
+  --color-accent: #ff5500;
+  --color-accent-hover: #ff8800;
+  --color-accent-selection: rgba(255, 85, 0, 0.3);
   --color-success: #10b981;
   --color-error: #ef4444;
   color-scheme: light;
@@ -101,9 +123,9 @@ html.dark {
   --color-primary: #fafafa;
   --color-secondary: #a1a1aa;
   --color-muted: #71717a;
-  --color-accent: #ff751f;
-  --color-accent-hover: #ff914d;
-  --color-accent-selection: rgba(255, 117, 31, 0.3);
+  --color-accent: #ff5500;
+  --color-accent-hover: #ffaa33;
+  --color-accent-selection: rgba(255, 85, 0, 0.3);
   --color-success: #34d399;
   --color-error: #f87171;
   color-scheme: dark;
@@ -111,48 +133,48 @@ html.dark {
 
 /* ── Accent: Blue ── */
 html.theme-blue {
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-accent-selection: rgba(37, 99, 235, 0.3);
+  --color-accent: #0055ff;
+  --color-accent-hover: #0099ff;
+  --color-accent-selection: rgba(0, 85, 255, 0.3);
 }
 html.theme-blue.dark {
-  --color-accent: #3b82f6;
-  --color-accent-hover: #60a5fa;
-  --color-accent-selection: rgba(59, 130, 246, 0.3);
+  --color-accent: #3388ff;
+  --color-accent-hover: #66ccff;
+  --color-accent-selection: rgba(51, 136, 255, 0.3);
 }
 
 /* ── Accent: Emerald ── */
 html.theme-emerald {
-  --color-accent: #059669;
-  --color-accent-hover: #047857;
-  --color-accent-selection: rgba(5, 150, 105, 0.3);
+  --color-accent: #00a86b;
+  --color-accent-hover: #00d286;
+  --color-accent-selection: rgba(0, 168, 107, 0.3);
 }
 html.theme-emerald.dark {
-  --color-accent: #10b981;
-  --color-accent-hover: #34d399;
-  --color-accent-selection: rgba(16, 185, 129, 0.3);
+  --color-accent: #00d286;
+  --color-accent-hover: #33ffaa;
+  --color-accent-selection: rgba(0, 210, 134, 0.3);
 }
 
 /* ── Accent: Purple ── */
 html.theme-purple {
-  --color-accent: #7c3aed;
-  --color-accent-hover: #6d28d9;
-  --color-accent-selection: rgba(124, 58, 237, 0.3);
+  --color-accent: #8800ff;
+  --color-accent-hover: #bb33ff;
+  --color-accent-selection: rgba(136, 0, 255, 0.3);
 }
 html.theme-purple.dark {
-  --color-accent: #8b5cf6;
-  --color-accent-hover: #a78bfa;
-  --color-accent-selection: rgba(139, 92, 246, 0.3);
+  --color-accent: #aa55ff;
+  --color-accent-hover: #dd88ff;
+  --color-accent-selection: rgba(170, 85, 255, 0.3);
 }
 
 /* ── Accent: Rose ── */
 html.theme-rose {
-  --color-accent: #e11d48;
-  --color-accent-hover: #be123c;
-  --color-accent-selection: rgba(225, 29, 72, 0.3);
+  --color-accent: #ff0055;
+  --color-accent-hover: #ff3388;
+  --color-accent-selection: rgba(255, 0, 85, 0.3);
 }
 html.theme-rose.dark {
-  --color-accent: #f43f5e;
-  --color-accent-hover: #fb7185;
-  --color-accent-selection: rgba(244, 63, 94, 0.3);
+  --color-accent: #ff3377;
+  --color-accent-hover: #ff77aa;
+  --color-accent-selection: rgba(255, 51, 119, 0.3);
 }

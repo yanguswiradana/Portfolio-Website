@@ -116,5 +116,15 @@ const { title, description, ogImage, locale = 'en' } = Astro.props;
       };
     </script>
     <script is:inline defer src="/_vercel/insights/script.js"></script>
+    
+    <!-- Lenis Smooth Scroll -->
+    <script>
+      import Lenis from 'lenis';
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const lenis = new Lenis({
+          autoRaf: true,
+        });
+      }
+    </script>
   </body>
 </html>

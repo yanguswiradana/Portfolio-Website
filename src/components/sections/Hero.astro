@@ -28,21 +28,21 @@ const t = translations[locale];
   <h1
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal text-5xl font-semibold tracking-tight text-primary md:text-7xl"
+    class="reveal reveal-delay-100 text-5xl font-semibold tracking-tight text-primary md:text-7xl"
   >
-    {profile.name}.
+    <span class="text-gradient-accent">{profile.name}</span>.
   </h1>
   <p
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal mt-6 max-w-2xl text-xl text-secondary md:text-2xl"
+    class="reveal reveal-delay-200 mt-6 max-w-2xl text-xl text-secondary md:text-2xl"
   >
     {profile.tagline}
   </p>
   <div
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal mt-10 flex flex-wrap items-center gap-4"
+    class="reveal reveal-delay-300 mt-10 flex flex-wrap items-center gap-4 sm:gap-6"
   >
     <Button href="#projects" variant="primary" size="lg">
       {t.viewProjects}
@@ -52,13 +52,25 @@ const t = translations[locale];
       <Icon name="lucide:download" width={18} height={18} aria-hidden="true" />
       {t.downloadResume}
     </Button>
+    <div class="flex items-center gap-4 sm:ml-2 sm:border-l sm:border-subtle sm:pl-6">
+      {profile.socials.github && (
+        <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" class="text-muted transition-colors hover:text-accent hover:scale-110 active:scale-95" aria-label="GitHub">
+          <Icon name="lucide:github" width={24} height={24} aria-hidden="true" />
+        </a>
+      )}
+      {profile.socials.linkedin && (
+        <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" class="text-muted transition-colors hover:text-accent hover:scale-110 active:scale-95" aria-label="LinkedIn">
+          <Icon name="lucide:linkedin" width={24} height={24} aria-hidden="true" />
+        </a>
+      )}
+    </div>
   </div>
 
   <a
     href="#about"
     x-data
     x-intersect.once="$el.classList.add('is-visible')"
-    class="reveal mt-16 hidden w-fit items-center gap-2 text-sm text-muted transition-colors hover:text-primary md:inline-flex"
+    class="reveal reveal-delay-400 mt-16 hidden w-fit items-center gap-2 text-sm text-muted transition-colors hover:text-primary md:inline-flex"
     aria-label="Scroll to about section"
   >
     <span>{t.scroll}</span>
