@@ -8,6 +8,7 @@ const postsCollection = defineCollection({
     summary: z.string(),
     publishedDate: z.string(),
     coverImage: z.string().optional(),
+    githubUrl: z.string().optional(),
     content: z.any(), // Keystatic document node tree
   }),
 });
