@@ -1,0 +1,33 @@
+{
+  "title": "Convert PDF from RGB to CMYK with Python",
+  "locale": "en",
+  "summary": "A Python tool with GUI and CLI to easily convert RGB PDFs to CMYK format for professional printing.",
+  "publishedDate": "2026-08-01",
+  "coverImage": "",
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "I recently built a Python application to solve a common problem in the printing industry: converting PDF files from RGB to CMYK color space."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "This tool supports both a graphical user interface (GUI) and a command-line interface (CLI) for batch automation. It requires Python 3.7+ and Ghostscript 10.x to be installed on your Windows machine."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "You can find the source code and installation instructions on my GitHub repository: https://github.com/yanguswiradana/rgb-to-cmyk.git"
+        }
+      ]
+    }
+  ]
+}
