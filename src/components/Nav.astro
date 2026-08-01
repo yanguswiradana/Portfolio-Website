@@ -14,6 +14,10 @@ interface Props {
 const { locale } = Astro.props;
 const profile = locale === 'id' ? profileId : profileEn;
 const t = translations[locale];
+
+const pathname = Astro.url.pathname;
+// Match "/", "/id", "/id/" but not "/blog"
+const isHome = pathname === '/' || pathname === '/id' || pathname === '/id/';
 ---
 
 <div
@@ -75,14 +79,25 @@ const t = translations[locale];
       <ul class="hidden items-center gap-1 md:flex">
         {
           NAV_LINKS.map((link) => {
-            const href = link.href.startsWith('#')
-              ? (locale === 'id' ? `/id${link.href}` : `/${link.href}`)
-              : (locale === 'id' ? `/id${link.href}` : link.href);
+            const isHash = link.href.startsWith('#');
+            let href = link.href;
+            
+            if (isHash) {
+              if (isHome) {
+                href = link.href;
+              } else {
+                href = locale === 'id' ? `/id/${link.href}` : `/${link.href}`;
+              }
+            } else {
+              href = locale === 'id' ? `/id${link.href}` : link.href;
+            }
+
             return (
               <li>
                 <a
                   href={href}
                   data-nav-link
+                  data-astro-reload={!isHome && isHash ? '' : undefined}
                   class="relative rounded-md px-3 py-2 text-sm text-secondary transition-colors hover:text-primary after:absolute after:-bottom-1 after:left-3 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-[calc(100%-1.5rem)]"
                 >
                   {t[link.key]}
@@ -237,14 +252,25 @@ const t = translations[locale];
       <ul class="space-y-1">
         {
           NAV_LINKS.map((link) => {
-            const href = link.href.startsWith('#')
-              ? (locale === 'id' ? `/id${link.href}` : `/${link.href}`)
-              : (locale === 'id' ? `/id${link.href}` : link.href);
+            const isHash = link.href.startsWith('#');
+            let href = link.href;
+            
+            if (isHash) {
+              if (isHome) {
+                href = link.href;
+              } else {
+                href = locale === 'id' ? `/id/${link.href}` : `/${link.href}`;
+              }
+            } else {
+              href = locale === 'id' ? `/id${link.href}` : link.href;
+            }
+
             return (
               <li>
                 <a
                   href={href}
                   x-on:click="open = false"
+                  data-astro-reload={!isHome && isHash ? '' : undefined}
                   class="block rounded-lg px-4 py-3 text-base text-secondary transition-colors hover:bg-subtle hover:text-primary"
                 >
                   {t[link.key]}
