@@ -4,6 +4,7 @@
   "summary": "Aplikasi Python dengan GUI dan CLI untuk mengubah format warna PDF dari RGB ke CMYK untuk kebutuhan cetak profesional.",
   "publishedDate": "2026-08-01",
   "coverImage": "",
+  "githubUrl": "https://github.com/yanguswiradana/rgb-to-cmyk.git",
   "content": [
     {
       "type": "paragraph",
@@ -25,7 +26,7 @@
       "type": "paragraph",
       "children": [
         {
-          "text": "Anda dapat melihat source code dan panduan instalasinya di repositori GitHub saya: https://github.com/yanguswiradana/rgb-to-cmyk.git"
+          "text": "Anda dapat melihat source code dan panduan instalasinya di repositori GitHub saya."
         }
       ]
     }

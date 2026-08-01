@@ -19,6 +19,14 @@ const sorted = posts.sort(
 
 <BaseLayout title={`${t.blog} — ${profileEn.name}`} description={t.blogSubtitle} locale={locale}>
   <main class="mx-auto max-w-4xl px-6 py-24 md:py-32">
+    <!-- Back to home -->
+    <a
+      href="/#"
+      class="inline-flex items-center gap-1 text-sm text-secondary hover:text-accent mb-8"
+    >
+      ← {t.backHome}
+    </a>
+
     <!-- Header -->
     <header class="mb-12 max-w-2xl">
       <h1 class="text-4xl font-semibold tracking-tight text-primary md:text-5xl">

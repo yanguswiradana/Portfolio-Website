@@ -277,6 +277,7 @@ export default config({
         summary: fields.text({ label: 'Summary', multiline: true }),
         publishedDate: fields.date({ label: 'Published Date' }),
         coverImage: fields.text({ label: 'Cover Image URL (Optional)' }),
+        githubUrl: fields.text({ label: 'GitHub Repo URL (Optional)' }),
         content: fields.document({
           label: 'Content',
           formatting: true,

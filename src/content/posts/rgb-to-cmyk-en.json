@@ -4,6 +4,7 @@
   "summary": "A Python tool with GUI and CLI to easily convert RGB PDFs to CMYK format for professional printing.",
   "publishedDate": "2026-08-01",
   "coverImage": "",
+  "githubUrl": "https://github.com/yanguswiradana/rgb-to-cmyk.git",
   "content": [
     {
       "type": "paragraph",
@@ -25,7 +26,7 @@
       "type": "paragraph",
       "children": [
         {
-          "text": "You can find the source code and installation instructions on my GitHub repository: https://github.com/yanguswiradana/rgb-to-cmyk.git"
+          "text": "You can find the source code and installation instructions on my GitHub repository."
         }
       ]
     }
