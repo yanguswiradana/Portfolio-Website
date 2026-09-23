@@ -15,6 +15,20 @@
     "twitter": "https://x.com/arcxcode",
     "instagram": "https://www.instagram.com/arcxcode"
   },
+  "stack": [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Astro",
+    "Next.js",
+    "Tailwind CSS",
+    "Laravel",
+    "Node.js",
+    "Python",
+    "PostgreSQL",
+    "Docker",
+    "Google Gemini"
+  ],
   "seo": {
     "title": "I Wayan Agus Wiradana — Junior Web Developer",
     "description": "I am a Junior Web Developer with a deep passion for Artificial Intelligence. I love building beautiful, functional websites and integrating AI-driven solutions.",
