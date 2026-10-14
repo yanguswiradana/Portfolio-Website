@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '~/layouts/BaseLayout.astro';
+import TerminalLayout from '~/layouts/TerminalLayout.astro';
 import { getCollection } from 'astro:content';
 import { translations } from '~/lib/translations';
-import { Icon } from 'astro-icon/components';
+import { renderPostContent } from '~/lib/render-post';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('posts')).filter(
@@ -17,115 +17,26 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const locale = 'id';
 const t = translations[locale];
-
-// Render Keystatic document nodes to HTML string (no React dependency)
-function renderNode(node: any): string {
-  if (!node) return '';
-
-  if (node.text !== undefined) {
-    let text = node.text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-    if (node.bold) text = `<strong>${text}</strong>`;
-    if (node.italic) text = `<em>${text}</em>`;
-    if (node.underline) text = `<u>${text}</u>`;
-    if (node.code) text = `<code>${text}</code>`;
-    if (node.strikethrough) text = `<s>${text}</s>`;
-    return text;
-  }
-
-  const children = (node.children ?? []).map(renderNode).join('');
-
-  switch (node.type) {
-    case 'paragraph':
-      return `<p>${children}</p>`;
-    case 'heading': {
-      const level = node.level ?? 2;
-      return `<h${level}>${children}</h${level}>`;
-    }
-    case 'unordered-list':
-      return `<ul>${children}</ul>`;
-    case 'ordered-list':
-      return `<ol>${children}</ol>`;
-    case 'list-item':
-      return `<li>${children}</li>`;
-    case 'list-item-content':
-      return children;
-    case 'blockquote':
-      return `<blockquote>${children}</blockquote>`;
-    case 'code':
-      return `<pre><code>${children}</code></pre>`;
-    case 'divider':
-      return `<hr />`;
-    case 'link':
-      return `<a href="${node.href ?? '#'}" target="_blank" rel="noopener noreferrer">${children}</a>`;
-    case 'image':
-      return `<img src="${node.src ?? ''}" alt="${node.alt ?? ''}" />`;
-    default:
-      return children;
-  }
-}
-
-const renderedContent = Array.isArray(post.data.content)
-  ? post.data.content.map(renderNode).join('')
-  : '';
+const renderedContent = renderPostContent(post.data.content);
+const date = new Date(post.data.publishedDate).toLocaleDateString('id-ID', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<BaseLayout title={`${post.data.title} — Blog`} description={post.data.summary} locale={locale}>
-  <article class="mx-auto max-w-3xl px-6 py-24 md:py-32">
-    <!-- Back to blog -->
-    <a
-      href="/id/#blog"
-      class="inline-flex items-center gap-1 text-sm text-secondary hover:text-accent mb-8"
-    >
-      ← {t.backToBlog}
-    </a>
-
-    <!-- Header -->
-    <header class="mb-8">
-      <p class="text-sm text-muted">
-        {t.publishedOn} {new Date(post.data.publishedDate).toLocaleDateString('id-ID', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
+<TerminalLayout title={`${post.data.title} — Blog`} description={post.data.summary} locale={locale}>
+  <article class="t-wrap t-article">
+    <p class="t-links-row"><a href="/id/blog">&lt;- {t.blog}</a></p>
+    <p class="t-prompt-line"><span class="t-prompt">guest@wiradana</span><span class="t-path">:~/blog</span><span class="t-cmd">$ cat {Astro.params.slug}.md</span></p>
+    <p class="t-article-meta">{t.publishedOn} {date}</p>
+    <h1>{post.data.title}</h1>
+    <p class="t-article-summary">{post.data.summary}</p>
+    {post.data.githubUrl && (
+      <p class="t-links-row">
+        <a href={post.data.githubUrl} target="_blank" rel="noopener noreferrer">lihat repositori di github -&gt;</a>
       </p>
-      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-primary sm:text-4xl md:text-5xl">
-        {post.data.title}
-      </h1>
-      <p class="mt-4 text-lg text-secondary border-l-2 border-accent pl-4 italic">
-        {post.data.summary}
-      </p>
-      {post.data.githubUrl && (
-        <div class="mt-6">
-          <a
-            href={post.data.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-lg bg-elevated border border-subtle px-4 py-2 text-sm font-semibold text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent shadow-sm"
-          >
-            <Icon name="simple-icons:github" class="h-4 w-4" />
-            Lihat Repositori di GitHub
-          </a>
-        </div>
-      )}
-    </header>
-
-    {post.data.coverImage && (
-      <div class="aspect-video w-full overflow-hidden rounded-xl border border-subtle bg-elevated mb-12">
-        <img
-          src={post.data.coverImage}
-          alt={`Cover image for ${post.data.title}`}
-          class="h-full w-full object-cover"
-        />
-      </div>
     )}
-
-    <!-- Content body — server-rendered, no React dependency -->
-    <div
-      class="prose dark:prose-invert prose-zinc max-w-none text-secondary prose-headings:text-primary prose-a:text-accent prose-strong:text-primary"
-      set:html={renderedContent}
-    />
+    <div class="t-prose" set:html={renderedContent} />
   </article>
-</BaseLayout>
+</TerminalLayout>

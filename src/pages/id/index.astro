@@ -1,15 +1,15 @@
 ---
-import BaseLayout from '~/layouts/BaseLayout.astro';
-import PageContent from '~/components/PageContent.astro';
+import TerminalLayout from '~/layouts/TerminalLayout.astro';
+import TerminalPage from '~/components/TerminalPage.astro';
 import profileId from '~/data/id/profile.json';
 import { SITE_URL } from '~/consts';
 ---
 
-<BaseLayout
+<TerminalLayout
   title={profileId.seo.title}
   description={profileId.seo.description}
   ogImage={`${SITE_URL}${profileId.seo.ogImage || '/og.png'}`}
   locale="id"
 >
-  <PageContent locale="id" />
-</BaseLayout>
+  <TerminalPage locale="id" />
+</TerminalLayout>

@@ -1,0 +1,26 @@
+---
+import certsEn from '~/data/en/certifications.json';
+import certsId from '~/data/id/certifications.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const certs = locale === 'id' ? certsId.certifications : certsEn.certifications;
+const t = translations[locale];
+---
+
+<section class="t-wrap t-section" id="certifications" aria-labelledby="certifications-heading">
+  <h2 id="certifications-heading"><span class="t-prompt">$</span> cat certs.txt</h2>
+  <ul class="t-certs">
+    {certs.map((c) => (
+      <li>
+        <span>{c.title}</span>
+        <span class="t-dim">{c.issuer}, {c.date}</span>
+      </li>
+    ))}
+    {certs.length === 0 && <li><span class="t-dim">{t.emptyBlog}</span></li>}
+  </ul>
+</section>

@@ -1,0 +1,24 @@
+---
+import skillsEn from '~/data/en/skills.json';
+import skillsId from '~/data/id/skills.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const groups = locale === 'id' ? skillsId.skillGroups : skillsEn.skillGroups;
+const t = translations[locale];
+
+const toKey = (category: string) =>
+  category.toLowerCase().replace(/[^a-z]+/g, '_').replace(/^_|_$/g, '');
+const lines = groups.map(
+  (g) => `  "${toKey(g.category)}": [${g.skills.map((s) => `"${s.name}"`).join(', ')}]`
+);
+---
+
+<section class="t-wrap t-section" id="skills" aria-labelledby="skills-heading">
+  <h2 id="skills-heading"><span class="t-prompt">$</span> cat stack.json</h2>
+  <pre class="t-codeblock" aria-label={t.skillsSubtitle}><code>{'{\n' + lines.join(',\n') + '\n}'}</code></pre>
+</section>

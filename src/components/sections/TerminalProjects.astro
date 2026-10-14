@@ -1,0 +1,56 @@
+---
+import projectsEn from '~/data/en/projects.json';
+import projectsId from '~/data/id/projects.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const projects = locale === 'id' ? projectsId.projects : projectsEn.projects;
+const t = translations[locale];
+---
+
+<section class="t-wrap t-section" id="projects" aria-labelledby="projects-heading">
+  <h2 id="projects-heading"><span class="t-prompt">$</span> ls projects/ --featured</h2>
+  <div class="t-filter-row" role="group" aria-label={t.projects}>
+    <button class="t-chip is-active" data-project-filter="all" aria-pressed="true">{t.all}</button>
+    <button class="t-chip" data-project-filter="fullstack" aria-pressed="false">fullstack/ai</button>
+    <button class="t-chip" data-project-filter="frontend" aria-pressed="false">frontend</button>
+  </div>
+  {projects.map((p) => (
+    <article class="t-proj" data-project-item data-category={p.category}>
+      <img src={p.image} alt={`${p.title} application interface`} loading="lazy" width="960" height="540" />
+      <div class="t-proj-body">
+        <h3>{p.title} {p.featured && <span class="t-flag">[featured]</span>}</h3>
+        <p>{p.description}</p>
+        <p class="t-tech">{p.tags.join(' / ')}</p>
+        <p class="t-links-row">
+          <a href={p.liveUrl} target="_blank" rel="noopener noreferrer">live</a>
+          <a href={p.githubUrl} target="_blank" rel="noopener noreferrer">source</a>
+        </p>
+      </div>
+    </article>
+  ))}
+</section>
+
+<script>
+  const chips = document.querySelectorAll('[data-project-filter]');
+  const items = document.querySelectorAll('[data-project-item][data-category]');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => {
+        c.classList.remove('is-active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      chip.classList.add('is-active');
+      chip.setAttribute('aria-pressed', 'true');
+      const f = chip.getAttribute('data-project-filter');
+      items.forEach((item) => {
+        const show = f === 'all' || item.getAttribute('data-category') === f;
+        item.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+</script>

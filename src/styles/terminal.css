@@ -1,0 +1,302 @@
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/700.css';
+@import '@fontsource/jetbrains-mono/800.css';
+
+/* Terminal theme: phosphor green console. Scoped under .term so Keystatic,
+   blog, and 404 pages keep the default Tailwind theme. */
+.term {
+  --t-bg: #070907;
+  --t-panel: #0c0e0c;
+  --t-line: #1d241d;
+  --t-ink: #d7e0d2;
+  --t-dim: #7d8a79;
+  --t-green: #4ade80;
+  --t-amber: #fbbf24;
+  --t-red: #f87171;
+
+  background: var(--t-bg);
+  color: var(--t-ink);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.term::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(74, 222, 128, 0.025) 3px 4px);
+}
+
+.term h1, .term h2, .term h3 {
+  color: var(--t-green);
+  margin: 0;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.term p { margin: 0; }
+.term a { color: var(--t-green); }
+.term img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  filter: saturate(0.6) contrast(1.05);
+  border: 1px solid var(--t-line);
+}
+
+.term ::selection { background: var(--t-green); color: #070907; }
+.term :focus-visible { outline: 2px solid var(--t-green); outline-offset: 3px; }
+
+.term .t-wrap {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.term section[id] { scroll-margin-top: 5rem; }
+
+.term .skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -6rem;
+  z-index: 60;
+  background: var(--t-green);
+  color: #070907;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+}
+.term .skip-link:focus { top: 1rem; }
+
+.term .t-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--t-green);
+  background: transparent;
+  color: var(--t-green);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.65rem 1.1rem;
+  min-height: 44px;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.term .t-btn:hover { background: var(--t-green); color: #070907; }
+.term .t-btn-solid { background: var(--t-green); color: #070907; }
+.term .t-btn-solid:hover { background: var(--t-ink); border-color: var(--t-ink); }
+.term .t-btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; }
+.term .t-btn[disabled] { opacity: 0.5; pointer-events: none; }
+
+.term .t-nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 40;
+  background: rgba(7, 9, 7, 0.92);
+  border-bottom: 1px solid var(--t-line);
+}
+.term .t-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 3.5rem;
+}
+.term .t-brand { font-weight: 800; text-decoration: none; color: var(--t-green); }
+.term .t-brand::before { content: "~$ "; color: var(--t-dim); }
+.term .t-nav-links { display: none; list-style: none; margin: 0; padding: 0; gap: 0.25rem; }
+.term .t-nav-links a { text-decoration: none; color: var(--t-dim); padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+.term .t-nav-links a:hover, .term .t-nav-links a.is-active { color: var(--t-green); background: var(--t-panel); }
+.term .t-nav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.term .t-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--t-green);
+  padding: 0.65rem 0.55rem;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+.term .t-toggle span { display: block; width: 1rem; height: 2px; background: var(--t-green); }
+
+.term .t-dialog {
+  background: var(--t-panel);
+  border: 1px solid var(--t-green);
+  color: var(--t-ink);
+  padding: 1.25rem;
+  width: min(22rem, calc(100vw - 2rem));
+  font: inherit;
+}
+.term .t-dialog::backdrop { background: rgba(0, 0, 0, 0.7); }
+.term .t-dialog-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: var(--t-green); }
+.term .t-mobile-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; }
+.term .t-mobile-links a { display: block; padding: 0.7rem; color: var(--t-ink); text-decoration: none; min-height: 44px; }
+.term .t-mobile-links a:hover { background: var(--t-line); color: var(--t-green); }
+
+.term .t-main { padding-top: 3.5rem; }
+.term .t-hero { padding-block: 4rem 3rem; }
+.term .t-prompt-line { color: var(--t-dim); font-size: 0.85rem; }
+.term .t-prompt { color: var(--t-green); font-weight: 700; }
+.term .t-path { color: var(--t-amber); }
+.term .t-cmd { color: var(--t-ink); }
+.term .t-hero-title { font-size: clamp(2.2rem, 7vw, 4rem); font-weight: 800; margin-top: 1rem; line-height: 1.15; }
+.term .t-caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background: var(--t-green);
+  margin-left: 0.1em;
+  vertical-align: -0.12em;
+  animation: t-blink 1.1s steps(1) infinite;
+}
+@keyframes t-blink { 50% { opacity: 0; } }
+.term .t-hero-sub { margin-top: 1.25rem; color: var(--t-ink); max-width: 60ch; }
+.term .t-hero-ctas { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.term .t-hero-mail { margin-top: 1.25rem; color: var(--t-dim); font-size: 0.85rem; }
+
+.term .t-tail { margin-top: 1.5rem; border: 1px solid var(--t-line); background: var(--t-panel); overflow: hidden; }
+.term .t-tail-label { display: block; padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--t-line); color: var(--t-dim); font-size: 0.75rem; }
+.term .t-tail-label .t-live { color: var(--t-green); }
+.term .t-tail-track {
+  display: inline-flex;
+  white-space: nowrap;
+  padding-block: 0.55rem;
+  font-size: 0.8rem;
+  color: var(--t-dim);
+  animation: t-tail-scroll 30s linear infinite;
+  will-change: transform;
+}
+.term .t-tail-track span { padding-right: 3rem; }
+.term .t-tail-track .t-ok { color: var(--t-green); }
+.term .t-tail-track .t-warn { color: var(--t-amber); }
+@keyframes t-tail-scroll { to { transform: translateX(-50%); } }
+.term .t-tail:hover .t-tail-track, .term .t-tail:focus-within .t-tail-track { animation-play-state: paused; }
+
+.term .t-section { padding-block: 3rem; border-top: 1px dashed var(--t-line); }
+.term .t-section h2 { font-size: 1.15rem; margin-bottom: 1.25rem; }
+.term .t-section h2 .t-prompt { margin-right: 0.5rem; }
+.term .t-out { max-width: 70ch; }
+.term .t-sysinfo {
+  display: grid;
+  gap: 0.3rem;
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  background: var(--t-panel);
+  border: 1px solid var(--t-line);
+}
+.term .t-sysinfo div { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; }
+.term .t-sysinfo dt { color: var(--t-dim); }
+.term .t-sysinfo dd { margin: 0; color: var(--t-ink); }
+.term .t-links-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin: 1.25rem 0 0; }
+.term .t-links-row a:hover { color: var(--t-ink); }
+
+.term .t-filter-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.term .t-chip {
+  font: inherit;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--t-line);
+  color: var(--t-dim);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+.term .t-chip.is-active { border-color: var(--t-green); color: var(--t-green); }
+.term .is-hidden { display: none !important; }
+
+.term .t-proj { border: 1px solid var(--t-line); background: var(--t-panel); margin-bottom: 1.5rem; }
+.term .t-proj img { border: none; border-bottom: 1px solid var(--t-line); width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.term .t-proj-body { padding: 1.25rem; display: grid; gap: 0.6rem; }
+.term .t-proj-body h3 { font-size: 1.05rem; }
+.term .t-flag { color: var(--t-amber); font-size: 0.8rem; }
+.term .t-tech { color: var(--t-dim); font-size: 0.8rem; }
+.term .t-proj-body > p { font-size: 0.88rem; }
+
+.term .t-codeblock {
+  background: var(--t-panel);
+  border: 1px solid var(--t-line);
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  margin: 0;
+}
+.term .t-codeblock code { color: var(--t-ink); }
+
+.term .t-log { list-style: none; margin: 0; padding: 0; display: grid; }
+.term .t-log li { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 1rem; border-bottom: 1px dashed var(--t-line); }
+.term .t-hash { color: var(--t-amber); font-size: 0.78rem; }
+.term .t-log h3 { font-size: 0.9rem; color: var(--t-ink); }
+.term .t-log p { font-size: 0.83rem; color: var(--t-dim); margin-top: 0.3rem; }
+
+.term .t-post { border: 1px solid var(--t-line); background: var(--t-panel); padding: 1.25rem; margin-bottom: 1rem; display: grid; gap: 0.5rem; }
+.term .t-post-date { color: var(--t-amber); font-size: 0.78rem; }
+.term .t-post h3 { color: var(--t-ink); font-size: 1rem; }
+.term .t-post p { font-size: 0.85rem; color: var(--t-dim); }
+.term .t-article { display: grid; gap: 1rem; padding-block: 3rem; max-width: 44rem; }
+.term .t-article h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.2; }
+.term .t-article-meta { color: var(--t-amber); font-size: 0.8rem; }
+.term .t-article-summary { color: var(--t-ink); border-left: 2px solid var(--t-green); padding-left: 1rem; font-size: 0.95rem; }
+.term .t-prose { display: grid; gap: 1rem; font-size: 0.92rem; color: var(--t-ink); max-width: 70ch; }
+.term .t-prose p { margin: 0; }
+.term .t-prose h2, .term .t-prose h3 { color: var(--t-green); font-size: 1.05rem; }
+.term .t-prose a { color: var(--t-green); }
+.term .t-prose strong { color: var(--t-ink); }
+.term .t-prose code { background: var(--t-panel); border: 1px solid var(--t-line); padding: 0.1rem 0.35rem; font-size: 0.85em; }
+.term .t-prose pre { background: var(--t-panel); border: 1px solid var(--t-line); padding: 1rem; overflow-x: auto; }
+.term .t-prose pre code { background: none; border: none; padding: 0; }
+.term .t-prose ul, .term .t-prose ol { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.35rem; }
+.term .t-prose blockquote { margin: 0; border-left: 2px solid var(--t-amber); padding-left: 1rem; color: var(--t-dim); }
+.term .t-prose hr { border: none; border-top: 1px dashed var(--t-line); }
+.term .t-prose img { max-width: 100%; }
+.term .t-certs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--t-line); }
+.term .t-certs li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding: 0.8rem 1rem; border-bottom: 1px dashed var(--t-line); }
+.term .t-certs li:last-child { border-bottom: none; }
+.term .t-dim { color: var(--t-dim); font-size: 0.82rem; }
+
+.term .t-contact-grid { display: grid; gap: 1.5rem; }
+.term .t-form { display: grid; gap: 1rem; background: var(--t-panel); border: 1px solid var(--t-line); padding: 1.5rem; }
+.term .t-field { display: grid; gap: 0.4rem; }
+.term .t-field label { color: var(--t-green); font-size: 0.85rem; font-weight: 700; }
+.term .t-field input, .term .t-field textarea {
+  font: inherit;
+  font-size: 0.9rem;
+  background: var(--t-bg);
+  border: 1px solid var(--t-line);
+  color: var(--t-ink);
+  padding: 0.7rem 0.8rem;
+}
+.term .t-field input:focus, .term .t-field textarea:focus { border-color: var(--t-green); outline: none; }
+.term .t-field input[aria-invalid="true"], .term .t-field textarea[aria-invalid="true"] { border-color: var(--t-red); }
+.term .t-field-error { color: var(--t-red); font-size: 0.8rem; }
+.term .t-honeypot { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+.term .t-status { font-size: 0.85rem; padding: 0.7rem 0.9rem; border: 1px solid; }
+.term .t-status.is-success { color: var(--t-green); border-color: var(--t-green); }
+.term .t-status.is-error { color: var(--t-red); border-color: var(--t-red); }
+.term .t-aside { display: grid; gap: 0.75rem; align-content: start; color: var(--t-dim); font-size: 0.85rem; }
+.term .t-footer { border-top: 1px dashed var(--t-line); padding-block: 1.75rem; margin-top: 1rem; }
+.term .t-footer-inner { display: flex; flex-direction: column; gap: 0.5rem; color: var(--t-dim); font-size: 0.82rem; }
+.term .t-footer-inner .t-links-row { margin: 0; }
+
+@media (min-width: 768px) {
+  .term .t-nav-links { display: flex; }
+  .term .t-toggle { display: none; }
+  .term .t-contact-grid { grid-template-columns: 3fr 2fr; }
+  .term .t-footer-inner { flex-direction: row; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term .t-caret, .term .t-tail-track { animation: none; }
+}

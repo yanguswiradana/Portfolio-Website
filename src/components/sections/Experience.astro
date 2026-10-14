@@ -68,7 +68,7 @@ const t = translations[locale];
             <h3 class="text-lg font-semibold text-primary">
               {entry.role}
               <span class="font-normal text-muted"> @ </span>
-              {entry.link ? (
+              {'link' in entry && typeof entry.link === 'string' && entry.link ? (
                 <a
                   href={entry.link}
                   target="_blank"

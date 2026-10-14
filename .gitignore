@@ -17,3 +17,6 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Static HTML/CSS/JS design prototypes (not part of the Astro build)
+slicing/

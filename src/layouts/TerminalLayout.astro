@@ -1,0 +1,41 @@
+---
+import '~/styles/terminal.css';
+import TerminalNav from '~/components/TerminalNav.astro';
+import TerminalFooter from '~/components/TerminalFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  locale?: 'en' | 'id';
+}
+
+const { title, description, ogImage, locale = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    {description && <meta property="og:description" content={description} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#070907" />
+  </head>
+  <body class="term">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div id="top" aria-hidden="true"></div>
+    <TerminalNav locale={locale} />
+    <main id="main" class="t-main">
+      <slot />
+    </main>
+    <TerminalFooter locale={locale} />
+  </body>
+</html>

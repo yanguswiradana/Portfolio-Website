@@ -1,0 +1,23 @@
+---
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+const year = new Date().getFullYear();
+const home = locale === 'id' ? '/id' : '/';
+---
+
+<footer class="t-footer">
+  <div class="t-wrap t-footer-inner">
+    <p>&copy; {year} wiradana.dev &middot; {profile.location}</p>
+    <p class="t-links-row">
+      <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">github</a>
+      <a href={`${home}#hero`}>cd ~</a>
+    </p>
+  </div>
+</footer>

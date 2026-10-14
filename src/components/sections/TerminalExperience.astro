@@ -1,0 +1,60 @@
+---
+import expEn from '~/data/en/experience.json';
+import expId from '~/data/id/experience.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const experience = locale === 'id' ? expId.experience : expEn.experience;
+const t = translations[locale];
+
+const hashOf = (start: string, end: string | null) => {
+  const endPart = !end || end === 'null' ? 'now' : end;
+  return start === endPart ? start : `${start}..${endPart}`;
+};
+---
+
+<section class="t-wrap t-section" id="experience" aria-labelledby="experience-heading">
+  <h2 id="experience-heading"><span class="t-prompt">$</span> git log --oneline</h2>
+  <div class="t-filter-row" role="group" aria-label={t.experience}>
+    <button class="t-chip is-active" data-exp-filter="all" aria-pressed="true">{t.all}</button>
+    <button class="t-chip" data-exp-filter="work" aria-pressed="false">{t.filterWork}</button>
+    <button class="t-chip" data-exp-filter="organization" aria-pressed="false">{t.filterOrganization}</button>
+  </div>
+  <ol class="t-log">
+    {experience.map((e) => (
+      <li data-exp-item data-category={e.category}>
+        <span class="t-hash">{hashOf(e.startDate, e.endDate ?? null)}</span>
+        <div>
+          <h3>{e.role}, {e.company} ({e.location})</h3>
+          <p>{e.description}</p>
+          {e.highlights?.length > 0 && <p>{e.highlights.join(' ')}</p>}
+          {e.tech?.length > 0 && <p class="t-tech">{e.tech.join(', ')}</p>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<script>
+  const chips = document.querySelectorAll('[data-exp-filter]');
+  const items = document.querySelectorAll('[data-exp-item][data-category]');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => {
+        c.classList.remove('is-active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      chip.classList.add('is-active');
+      chip.setAttribute('aria-pressed', 'true');
+      const f = chip.getAttribute('data-exp-filter');
+      items.forEach((item) => {
+        const show = f === 'all' || item.getAttribute('data-category') === f;
+        item.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+</script>

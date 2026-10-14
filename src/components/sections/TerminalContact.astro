@@ -1,0 +1,143 @@
+---
+import { FORMSPREE_ENDPOINT } from '~/consts';
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+const t = translations[locale];
+---
+
+<section class="t-wrap t-section" id="contact" aria-labelledby="contact-heading">
+  <h2 id="contact-heading"><span class="t-prompt">$</span> ./contact --new</h2>
+  <div class="t-contact-grid">
+    <form
+      class="t-form"
+      id="contactForm"
+      action={FORMSPREE_ENDPOINT}
+      method="POST"
+      novalidate
+    >
+      <div class="t-field">
+        <label for="cf-name">{t.nameLabel}&gt;</label>
+        <input
+          id="cf-name"
+          name="name"
+          type="text"
+          placeholder={t.namePlaceholder}
+          autocomplete="name"
+          required
+          minlength="2"
+        />
+        <p class="t-field-error" data-error="name" hidden>
+          {locale === 'id' ? 'ERR: nama wajib (min 2 karakter).' : 'ERR: name required (min 2 chars).'}
+        </p>
+      </div>
+      <div class="t-field">
+        <label for="cf-email">{t.emailLabel}&gt;</label>
+        <input
+          id="cf-email"
+          name="email"
+          type="email"
+          placeholder={t.emailPlaceholder}
+          autocomplete="email"
+          required
+        />
+        <p class="t-field-error" data-error="email" hidden>
+          {locale === 'id' ? 'ERR: email valid wajib.' : 'ERR: valid email required.'}
+        </p>
+      </div>
+      <div class="t-field">
+        <label for="cf-message">{t.messageLabel}&gt;</label>
+        <textarea
+          id="cf-message"
+          name="message"
+          rows="5"
+          placeholder={t.messagePlaceholder}
+          required
+          minlength="10"
+        ></textarea>
+        <p class="t-field-error" data-error="message" hidden>
+          {locale === 'id' ? 'ERR: pesan wajib (min 10 karakter).' : 'ERR: message required (min 10 chars).'}
+        </p>
+      </div>
+      <input type="text" name="_gotcha" class="t-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button class="t-btn t-btn-solid" type="submit" id="cfSubmit">{t.sendMessage}</button>
+      <p class="t-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+    </form>
+    <aside class="t-aside">
+      <p>
+        stdin also open at<br />
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>{' '}
+        <button class="t-btn t-btn-sm" id="copyEmail" type="button">{t.copy}</button>
+      </p>
+      <p class="t-dim">{t.honeypotWarning} Form delivery by Formspree.</p>
+    </aside>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  const status = document.getElementById('formStatus');
+  const submit = document.getElementById('cfSubmit') as HTMLButtonElement | null;
+  const copyBtn = document.getElementById('copyEmail');
+
+  copyBtn?.addEventListener('click', () => {
+    const email = form?.querySelector('a[href^="mailto:"]')?.textContent?.trim() ?? '';
+    const done = (ok: boolean) => {
+      if (copyBtn) copyBtn.textContent = ok ? 'Copied' : 'Copy';
+      setTimeout(() => { if (copyBtn) copyBtn.textContent = 'Copy'; }, 1600);
+    };
+    if (navigator.clipboard && email) {
+      navigator.clipboard.writeText(email).then(() => done(true), () => done(false));
+    } else done(false);
+  });
+  function setError(name: string, on: boolean) {
+    const msg = form?.querySelector(`[data-error="${name}"]`) as HTMLElement | null;
+    const input = form?.elements.namedItem(name) as HTMLInputElement | null;
+    if (msg) msg.hidden = !on;
+    input?.setAttribute('aria-invalid', on ? 'true' : 'false');
+    return !on;
+  }
+  function showStatus(kind: 'is-success' | 'is-error', text: string) {
+    if (!status) return;
+    status.hidden = false;
+    status.className = 't-status ' + kind;
+    status.textContent = text;
+  }
+
+  form?.addEventListener('submit', (e) => {
+    const data = new FormData(form);
+    const name = String(data.get('name') ?? '').trim();
+    const email = String(data.get('email') ?? '').trim();
+    const message = String(data.get('message') ?? '').trim();
+    const okName = setError('name', name.length < 2);
+    const okEmail = setError('email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+    const okMsg = setError('message', message.length < 10);
+    if (!(okName && okEmail && okMsg)) { e.preventDefault(); return; }
+    if (data.get('_gotcha')) { e.preventDefault(); form.reset(); return; }
+    if (form.action === '#' || form.action.endsWith('#')) {
+      e.preventDefault();
+      showStatus('is-success', 'Message noted locally. Set PUBLIC_FORMSPREE_ID to send.');
+      return;
+    }
+    e.preventDefault();
+    if (submit) { submit.disabled = true; submit.textContent = 'Sending'; }
+    fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data })
+      .then((res) => {
+        if (res.ok) { form.reset(); showStatus('is-success', 'Message received. Reply within 48 hours.'); }
+        else showStatus('is-error', 'Send failed. Try again or email directly.');
+      })
+      .catch(() => showStatus('is-error', 'Send failed. Try again or email directly.'))
+      .finally(() => { if (submit) { submit.disabled = false; } });
+  });
+  ['name', 'email', 'message'].forEach((n) => {
+    const input = form?.elements.namedItem(n) as HTMLInputElement | null;
+    input?.addEventListener('input', () => setError(n, false));
+  });
+</script>

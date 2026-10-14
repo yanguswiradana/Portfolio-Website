@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const t = translations[locale];
+
+const posts = (await getCollection('posts'))
+  .filter((p) => p.data.locale === locale)
+  .sort((a, b) => +new Date(b.data.publishedDate) - +new Date(a.data.publishedDate))
+  .slice(0, 3);
+
+const blogHref = (id: string) => (locale === 'id' ? `/id/blog/${id}` : `/blog/${id}`);
+---
+
+<section class="t-wrap t-section" id="blog" aria-labelledby="blog-heading">
+  <h2 id="blog-heading"><span class="t-prompt">$</span> ls blog/ | head -3</h2>
+  {posts.length === 0 ? (
+    <p class="t-dim">{t.emptyBlog}</p>
+  ) : (
+    <>
+      {posts.map((p) => (
+        <article class="t-post">
+          <p class="t-post-date">{p.data.publishedDate}</p>
+          <h3><a href={blogHref(p.id)}>{p.data.title}</a></h3>
+          <p>{p.data.summary}</p>
+          <p class="t-links-row">
+            <a href={blogHref(p.id)}>{t.readMore} -&gt;</a>
+            {p.data.githubUrl && (
+              <a href={p.data.githubUrl} target="_blank" rel="noopener noreferrer">source</a>
+            )}
+          </p>
+        </article>
+      ))}
+      <p class="t-links-row">
+        <a href={locale === 'id' ? '/id/blog' : '/blog'}>{t.viewAllPosts} -&gt;</a>
+      </p>
+    </>
+  )}
+</section>

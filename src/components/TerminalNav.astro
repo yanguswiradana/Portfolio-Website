@@ -1,0 +1,102 @@
+---
+import { TERMINAL_NAV_LINKS as NAV_LINKS } from '~/lib/nav';
+import { translations } from '~/lib/translations';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const t = translations[locale];
+const home = locale === 'id' ? '/id' : '/';
+const prefix = (href: string) => (href.startsWith('#') ? href : href);
+---
+
+<div class="t-nav" id="siteNav">
+  <nav class="t-wrap t-nav-inner" aria-label="Primary">
+    <a class="t-brand" href={home} aria-label="wiradana.dev, home">wiradana.dev</a>
+    <ul class="t-nav-links">
+      {NAV_LINKS.map((link) => (
+        <li>
+          <a href={prefix(link.href)} data-nav={link.href.slice(1)}>{t[link.shortKey]}</a>
+        </li>
+      ))}
+    </ul>
+    <div class="t-nav-actions">
+      <a
+        class="t-nav-links"
+        href={locale === 'en' ? '/id' : '/'}
+        aria-label={locale === 'en' ? 'Switch to Indonesian' : 'Switch to English'}
+      >
+        {locale === 'en' ? 'ID' : 'EN'}
+      </a>
+      <a class="t-btn t-btn-sm" href="/cv.pdf" download>cv.pdf</a>
+      <button class="t-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<dialog class="t-dialog" id="mobileMenu" aria-label="Menu">
+  <div class="t-dialog-head">
+    <span>menu</span>
+    <button class="t-btn t-btn-sm" id="menuClose">close</button>
+  </div>
+  <ul class="t-mobile-links">
+    {NAV_LINKS.map((link) => (
+      <li><a href={prefix(link.href)}>{t[link.key]}</a></li>
+    ))}
+  </ul>
+</dialog>
+
+<script>
+  const nav = document.getElementById('siteNav');
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu') as HTMLDialogElement | null;
+  const menuClose = document.getElementById('menuClose');
+
+  const onScroll = () => nav?.classList.toggle('is-scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  function openMenu() {
+    if (!menu || typeof menu.showModal !== 'function') return;
+    if (!menu.open) menu.showModal();
+    toggle?.setAttribute('aria-expanded', 'true');
+    (menu.querySelector('a, button') as HTMLElement | null)?.focus();
+  }
+  function closeMenu(returnFocus = true) {
+    if (!menu) return;
+    if (menu.open) menu.close();
+    toggle?.setAttribute('aria-expanded', 'false');
+    if (returnFocus) (toggle as HTMLElement | null)?.focus?.();
+  }
+  toggle?.addEventListener('click', openMenu);
+  menuClose?.addEventListener('click', () => closeMenu());
+  menu?.addEventListener('click', (e) => { if (e.target === menu) closeMenu(); });
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => closeMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu?.open) closeMenu(); });
+
+  const links = document.querySelectorAll('[data-nav]');
+  const sections = Array.from(links)
+    .map((a) => document.getElementById(a.getAttribute('data-nav') ?? ''))
+    .filter((s): s is HTMLElement => !!s);
+  if ('IntersectionObserver' in window && sections.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          links.forEach((a) => {
+            const on = a.getAttribute('data-nav') === entry.target.id;
+            a.classList.toggle('is-active', on);
+            if (on) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    sections.forEach((s) => io.observe(s));
+  }
+</script>

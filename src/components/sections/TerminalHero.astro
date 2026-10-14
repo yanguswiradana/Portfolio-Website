@@ -1,0 +1,54 @@
+---
+import profileEn from '~/data/en/profile.json';
+import profileId from '~/data/id/profile.json';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const profile = locale === 'id' ? profileId : profileEn;
+
+const ticker = [
+  { state: 'ok', text: locale === 'id' ? 'BaliWasteAI tayang di vercel' : 'BaliWasteAI deployed to vercel' },
+  { state: 'ok', text: locale === 'id' ? 'dashboard freelance terkirim' : 'freelance dashboard shipped' },
+  { state: 'wip', text: locale === 'id' ? 'belajar integrasi AI' : 'learning AI integrations' },
+  { state: 'ok', text: locale === 'id' ? 'magang QA PT Balisoft selesai' : 'QA internship PT Balisoft done' },
+  { state: 'ok', text: locale === 'id' ? 'AV IDEASI 2026 berjalan' : 'IDEASI 2026 AV operated' },
+];
+---
+<section class="t-wrap t-hero" id="hero" aria-labelledby="hero-heading">
+  <p class="t-prompt-line"><span class="t-prompt">guest@wiradana</span><span class="t-path">:~</span><span class="t-cmd">$ whoami</span></p>
+  <h1 class="t-hero-title" id="hero-heading">
+    {profile.name}<span class="t-caret" aria-hidden="true"></span>
+  </h1>
+  <p class="t-hero-sub">
+    {profile.role}, {profile.location}.<br />{profile.tagline}{' '}
+    {locale === 'id'
+      ? 'Situs cepat dan aksesibel plus AI yang praktis.'
+      : 'Fast, accessible sites plus practical AI.'}
+  </p>
+  <p class="t-hero-ctas">
+    <a class="t-btn t-btn-solid" href="#projects">./view_projects.sh</a>
+    <a class="t-btn" href={profile.resumeUrl} download>download cv.pdf</a>
+  </p>
+  <p class="t-hero-mail">
+    mail: <a href={`mailto:${profile.email}`}>{profile.email}</a>{' '}
+    ({locale === 'id' ? 'balas dalam 48 jam' : 'replies in 48h'})
+  </p>
+  <div class="t-tail" role="marquee" aria-label={locale === 'id' ? 'Log status terbaru' : 'Latest status log'}>
+    <span class="t-tail-label">$ tail -f status.log <span class="t-live">[live]</span></span>
+    <div class="t-tail-track" aria-hidden="true">
+      <span>
+        {ticker.map((e) => (
+          <>[<span class={e.state === 'ok' ? 't-ok' : 't-warn'}>{e.state}</span>] {e.text} &middot;{' '}</>
+        ))}
+      </span>
+      <span>
+        {ticker.map((e) => (
+          <>[<span class={e.state === 'ok' ? 't-ok' : 't-warn'}>{e.state}</span>] {e.text} &middot;{' '}</>
+        ))}
+      </span>
+    </div>
+  </div>
+</section>

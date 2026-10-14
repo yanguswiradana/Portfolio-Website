@@ -1,0 +1,25 @@
+---
+import TerminalHero from '~/components/sections/TerminalHero.astro';
+import TerminalAbout from '~/components/sections/TerminalAbout.astro';
+import TerminalProjects from '~/components/sections/TerminalProjects.astro';
+import TerminalSkills from '~/components/sections/TerminalSkills.astro';
+import TerminalExperience from '~/components/sections/TerminalExperience.astro';
+import TerminalBlog from '~/components/sections/TerminalBlog.astro';
+import TerminalCerts from '~/components/sections/TerminalCerts.astro';
+import TerminalContact from '~/components/sections/TerminalContact.astro';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+---
+
+<TerminalHero locale={locale} />
+<TerminalAbout locale={locale} />
+<TerminalProjects locale={locale} />
+<TerminalSkills locale={locale} />
+<TerminalExperience locale={locale} />
+<TerminalBlog locale={locale} />
+<TerminalCerts locale={locale} />
+<TerminalContact locale={locale} />
