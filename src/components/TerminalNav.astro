@@ -24,13 +24,13 @@ const prefix = (href: string) => (href.startsWith('#') ? href : href);
     </ul>
     <div class="t-nav-actions">
       <a
-        class="t-nav-links"
+        class="t-nav-link"
         href={locale === 'en' ? '/id' : '/'}
         aria-label={locale === 'en' ? 'Switch to Indonesian' : 'Switch to English'}
       >
-        {locale === 'en' ? 'ID' : 'EN'}
+        [{locale === 'en' ? 'ID' : 'EN'}]
       </a>
-      <a class="t-btn t-btn-sm" href="/cv.pdf" download>cv.pdf</a>
+      <a class="t-nav-link t-nav-cv" href="/cv.pdf" download>cv.pdf</a>
       <button class="t-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>

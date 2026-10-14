@@ -116,6 +116,10 @@
 .term .t-nav-links a { text-decoration: none; color: var(--t-dim); padding: 0.4rem 0.6rem; font-size: 0.85rem; }
 .term .t-nav-links a:hover, .term .t-nav-links a.is-active { color: var(--t-green); background: var(--t-panel); }
 .term .t-nav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.term .t-nav-link { text-decoration: none; color: var(--t-dim); padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+.term .t-nav-link:hover { color: var(--t-green); background: var(--t-panel); }
+.term .t-nav-cv { color: var(--t-green); font-weight: 700; }
+.term .t-nav-cv::before { content: "$ "; color: var(--t-dim); }
 .term .t-toggle {
   display: inline-flex;
   flex-direction: column;
