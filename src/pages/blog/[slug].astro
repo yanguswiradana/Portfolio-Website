@@ -25,7 +25,7 @@ const date = new Date(post.data.publishedDate).toLocaleDateString('en-US', {
 });
 ---
 
-<TerminalLayout title={`${post.data.title} — Blog`} description={post.data.summary} locale={locale}>
+<TerminalLayout title="arcxcode" description={post.data.summary} locale={locale}>
   <article class="t-wrap t-article">
     <p class="t-links-row"><a href="/blog">&lt;- {t.blog}</a></p>
     <p class="t-prompt-line"><span class="t-prompt">guest@wiradana</span><span class="t-path">:~/blog</span><span class="t-cmd">$ cat {Astro.params.slug}.md</span></p>
