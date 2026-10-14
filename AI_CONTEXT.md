@@ -10,7 +10,7 @@
 - **UI Frameworks:** React (for specific interactive components), Alpine.js (for lightweight interactions)
 - **CMS:** Keystatic (Local-first Git-based CMS workflow)
 - **Package Manager:** npm
-- **Deployment:** Vercel (using `@astrojs/vercel/serverless` adapter, Node.js 20.x runtime)
+- **Deployment:** Vercel (static output, no adapter; Keystatic loaded in dev only)
 
 ## 2. Cross-OS Compatibility Notes
 - This project is developed across multiple OS environments (Windows, macOS, Linux).

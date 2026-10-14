@@ -3,13 +3,15 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import keystatic from '@keystatic/astro';
-import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
+
+const isProdBuild = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   site: undefined,
-  output: 'hybrid',
-  adapter: vercel(),
+  // Production is fully static (prevents the nodejs18.x runtime rejection).
+  // Dev runs a server so Keystatic's dynamic /keystatic + /api routes work.
+  output: isProdBuild ? 'static' : 'server',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'id'],
@@ -22,11 +24,12 @@ export default defineConfig({
     sitemap(),
     icon(),
     react(),
-    keystatic(),
+    // Keystatic injects prerender:false routes that need a server, so it is
+    // dev-only; production stays pure static.
+    ...(isProdBuild ? [] : [keystatic()]),
   ],
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
 });
-
