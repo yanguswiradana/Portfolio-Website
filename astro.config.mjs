@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import keystatic from '@keystatic/astro';
@@ -20,7 +20,6 @@ export default defineConfig({
     },
   },
   integrations: [
-    tailwind({ applyBaseStyles: false }),
     sitemap(),
     icon(),
     react(),
@@ -28,6 +27,9 @@ export default defineConfig({
     // dev-only; production stays pure static.
     ...(isProdBuild ? [] : [keystatic()]),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',

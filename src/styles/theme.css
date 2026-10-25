@@ -1,0 +1,99 @@
+/* Design token values (light/dark + accent themes, toggled at runtime).
+   Shared by globals.css and terminal.css so both themes expose the same
+   utilities (bg-base, text-muted, ...) without duplicating values. */
+
+/* Map runtime CSS vars to Tailwind v4 theme colors */
+@theme inline {
+  --color-base: var(--color-base);
+  --color-elevated: var(--color-elevated);
+  --color-subtle: var(--color-subtle);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-muted: var(--color-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ── Light mode defaults (no class needed) ── */
+:root {
+  --color-base: #fcfcfd;
+  --color-elevated: #f3f4f6;
+  --color-subtle: #e5e7eb;
+  --color-primary: #0f0f11;
+  --color-secondary: #3f3f46;
+  --color-muted: #71717a;
+  --color-accent: #ff5500;
+  --color-accent-hover: #ff8800;
+  --color-accent-selection: rgba(255, 85, 0, 0.3);
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  color-scheme: light;
+}
+
+/* ── Dark mode ── */
+html.dark {
+  --color-base: #0a0a0b;
+  --color-elevated: #111114;
+  --color-subtle: #1f1f23;
+  --color-primary: #fafafa;
+  --color-secondary: #a1a1aa;
+  --color-muted: #71717a;
+  --color-accent: #ff5500;
+  --color-accent-hover: #ffaa33;
+  --color-accent-selection: rgba(255, 85, 0, 0.3);
+  --color-success: #34d399;
+  --color-error: #f87171;
+  color-scheme: dark;
+}
+
+/* ── Accent: Blue ── */
+html.theme-blue {
+  --color-accent: #0055ff;
+  --color-accent-hover: #0099ff;
+  --color-accent-selection: rgba(0, 85, 255, 0.3);
+}
+html.theme-blue.dark {
+  --color-accent: #3388ff;
+  --color-accent-hover: #66ccff;
+  --color-accent-selection: rgba(51, 136, 255, 0.3);
+}
+
+/* ── Accent: Emerald ── */
+html.theme-emerald {
+  --color-accent: #00a86b;
+  --color-accent-hover: #00d286;
+  --color-accent-selection: rgba(0, 168, 107, 0.3);
+}
+html.theme-emerald.dark {
+  --color-accent: #00d286;
+  --color-accent-hover: #33ffaa;
+  --color-accent-selection: rgba(0, 210, 134, 0.3);
+}
+
+/* ── Accent: Purple ── */
+html.theme-purple {
+  --color-accent: #8800ff;
+  --color-accent-hover: #bb33ff;
+  --color-accent-selection: rgba(136, 0, 255, 0.3);
+}
+html.theme-purple.dark {
+  --color-accent: #aa55ff;
+  --color-accent-hover: #dd88ff;
+  --color-accent-selection: rgba(170, 85, 255, 0.3);
+}
+
+/* ── Accent: Rose ── */
+html.theme-rose {
+  --color-accent: #ff0055;
+  --color-accent-hover: #ff3388;
+  --color-accent-selection: rgba(255, 0, 85, 0.3);
+}
+html.theme-rose.dark {
+  --color-accent: #ff3377;
+  --color-accent-hover: #ff77aa;
+  --color-accent-selection: rgba(255, 51, 119, 0.3);
+}

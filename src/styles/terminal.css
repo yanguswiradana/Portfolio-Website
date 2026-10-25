@@ -2,6 +2,8 @@
 @import '@fontsource/jetbrains-mono/500.css';
 @import '@fontsource/jetbrains-mono/700.css';
 @import '@fontsource/jetbrains-mono/800.css';
+@import 'tailwindcss';
+@import './theme.css';
 
 /* Terminal theme: phosphor green console. Scoped under .term so Keystatic,
    blog, and 404 pages keep the default Tailwind theme. */

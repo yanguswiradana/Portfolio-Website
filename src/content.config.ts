@@ -1,7 +1,13 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
-const postsCollection = defineCollection({
-  type: 'data',
+const posts = defineCollection({
+  loader: glob({
+    pattern: '*.json',
+    base: './src/content/posts',
+    // Entry id = filename without extension (matches current post.id in URLs)
+    generateId: ({ entry }) => entry.replace(/\.json$/, ''),
+  }),
   schema: z.object({
     title: z.string(),
     locale: z.enum(['en', 'id']),
@@ -13,6 +19,4 @@ const postsCollection = defineCollection({
   }),
 });
 
-export const collections = {
-  posts: postsCollection,
-};
+export const collections = { posts };
